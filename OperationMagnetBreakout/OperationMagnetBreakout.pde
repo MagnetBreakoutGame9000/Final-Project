@@ -12,7 +12,7 @@ void draw() {
 
   //create a new block instance
   if (b.size() < 20) {
-    b.add(new Block(25, 90, 250));
+    b.add(new Block(25, 90, 250, 1));
   }
 
   for (int i = b.size() - 1; i >= 0; i--) {
@@ -21,7 +21,7 @@ void draw() {
   }
 
   if (bg.size() < 20) {
-    bg.add(new Block(250, 20, 40));
+    bg.add(new Block(250, 20, 40, 2));
   }
 
   for (int i = b.size() - 1; i >= 0; i--) {

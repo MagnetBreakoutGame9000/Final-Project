@@ -4,13 +4,16 @@ class Block {
   PVector loc;
   float wd;
   float ht;
+  float health;
   color c;
 
-  Block(float r, float g, float b) {
+  Block(float r, float g, float b, float h) {
 
     wd = 55;
     ht = 20;
-
+    
+    health = h;
+    
     c = color(r, g, b);
   }
 
