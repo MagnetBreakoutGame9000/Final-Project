@@ -9,12 +9,11 @@ void draw() {
   background(0);
 
   //create a new block instance
-  if(b.size() < 2){
+  if(b.size() < 20){
     b.add(new Block(25, 90, 250));
   }
   
   for (int i = b.size() - 1; i >= 0; i--) {
-    Block bl = b.get(i);
-    bl.display((bl.wd/2) + (i*bl.wd), 10);
-  }
+    Block b1 = b.get(i);
+    b1.display((b1.wd/2) + (i*b1.wd), (b1.ht/2));
 }
