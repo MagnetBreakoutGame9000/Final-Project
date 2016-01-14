@@ -17,7 +17,7 @@ class Block {
   void display(float x, float y) {
     //color block
     fill(c);
-    stroke(100, 100, 240);
+    stroke(0);
     //draw block centered on given point
     rect(x-(wd/2), y-(ht/2), wd, ht);
   }
