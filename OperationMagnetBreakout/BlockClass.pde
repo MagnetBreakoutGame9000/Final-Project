@@ -6,20 +6,18 @@ class Block {
   float ht;
   color c;
 
-  Block(float x, float y) {
-
-    loc = new PVector(x, y);
+  Block(float r, float g, float b) {
 
     wd = 80;
     ht = 20;
 
-    c = color(255);
+    c = color(r, g, b);
   }
 
   void display(float x, float y) {
     //color block
     fill(c);
-    stroke(c);
+    stroke(100, 100, 240);
     //draw block centered on given point
     rect(x-(wd/2), y-(ht/2), wd, ht);
   }
