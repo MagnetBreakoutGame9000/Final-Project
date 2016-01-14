@@ -15,9 +15,9 @@ void draw() {
   b.move();  //move ball
   b.display();  //display ball
   b.bounce();
-  /*if(b.isInContactWith(Paddle p)){
+  if(b.isInContactWith(Paddle p)){
     b.vel.x *= -1;
-  }*/
+  }
   //if(b.loc.y >= height - p.h && b.loc.x >= p.loc.x - p.b/2 && b.loc.x <= p.loc.x + p.b/2){
     //b.vel.y *= -1;
   //}

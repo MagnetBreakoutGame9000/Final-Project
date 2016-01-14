@@ -20,7 +20,7 @@ class Ball {
     if (loc.y - diam/2 <= 0) {
       vel.y *= -1;
     }
-    if(loc.y + diam/2 >= height){
+    if (loc.y + diam/2 >= height) {
       vel.y *= -1;
     }
     if (loc.x - diam/2 <= 0) {
@@ -30,10 +30,10 @@ class Ball {
       vel.x *= -1;
     }
   }
-  
-  /*boolean isInContactWith(Paddle p){
-    if(loc.y >= height - p.h && loc.x >= p.loc.x - p.b/2 && loc.x <= p.loc.x + p.b/2){
+
+  boolean isInContactWith(Paddle p) {
+    if ((loc.y >= height - p.h) && (loc.x >= p.loc.x - p.b/2) && (loc.x <= p.loc.x + p.b/2)) {
       return true;
     }
-  }*/
+  }
 }
