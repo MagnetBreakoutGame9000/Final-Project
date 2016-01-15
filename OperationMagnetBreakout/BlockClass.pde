@@ -8,7 +8,7 @@ class Block {
   color c;
 
   Block(float r, float g, float b, float h) {
-
+    
     wd = 55;
     ht = 20;
     
