@@ -4,7 +4,7 @@ class Paddle {
   int h;
 
   Paddle() {
-    loc = new PVector(width/2, height);
+    loc = new PVector(width/2, height-h);
     b = 100;
     h = 20;
   }
@@ -18,10 +18,10 @@ class Paddle {
     if (keyPressed) {
       if (key == CODED) {
         if (keyCode == RIGHT) {
-          loc.x += 2;
+          loc.x += 3;
         }
         if (keyCode == LEFT) {
-          loc.x -= 2;
+          loc.x -= 3;
         }
       }
     }

@@ -31,9 +31,11 @@ class Ball {
     }
   }
 
-  boolean isInContactWith(Paddle p) {
-    if ((loc.y >= height - p.h) && (loc.x >= p.loc.x - p.b/2) && (loc.x <= p.loc.x + p.b/2)) {
+  boolean isInContactWith(Paddle pad) {
+    if (loc.y + diam >= pad.loc.y - pad.h && loc.x >= pad.loc.x && loc.x <= pad.loc.x + pad.b) {
       return true;
+    } else {
+      return false;
     }
   }
 }
