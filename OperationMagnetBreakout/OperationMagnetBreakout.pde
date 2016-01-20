@@ -1,4 +1,3 @@
-
 //create arraylists for each row of block
 ArrayList<Block> bi;
 ArrayList<Block> bii;
