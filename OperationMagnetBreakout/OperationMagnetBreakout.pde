@@ -11,10 +11,10 @@ Ball b;  //initialize object from the Ball class
 void setup() {
   //define size of canvas
   size(1100, 700);
-  
+
   p = new Paddle();
   b = new Ball(width/2, height/2);
-  
+
   //define arraylists after the size has been defined
   bi = new ArrayList<Block>();
   bii = new ArrayList<Block>();
@@ -33,20 +33,7 @@ void draw() {
   b.bounce();
   if (b.isInContactWith(p)) {
     b.vel.y *= -1;
-    println(b.loc.x - p.loc.x);
-    if(b.loc.x - p.loc.x < p.b/4){
-      b.vel.x -= 3;
-    }
-    else if(b.loc.x - p.loc.x >= p.b/4 && b.loc.x - p.loc.x < p.b/2){
-      b.vel.x = -b.vel.x;
-    }
-    else if(b.loc.x - p.loc.x >= p.b/2 && b.loc.x - p.loc.x < 3*p.b/4){
-      b.vel.x = b.vel.x;
-    }
-    else if(b.loc.x - p.loc.x >= 3*p.b/4 && b.loc.x - p.loc.x <= p.b){
-      b.vel.x += 3;
-    }
-    //b.vel.x = 1 - 2*(p.loc.x - b.loc.x)/(p.b/2);
+    b.vel.x = map(b.loc.x - p.loc.x, 0, 100, -5, 5);
   }
 
 
@@ -67,7 +54,7 @@ void draw() {
     Block b2 = bii.get(i);
     b2.display((b2.wd/2) + (i*b2.wd), (3*b2.ht/2));
   }
- 
+
   //create third row of blocks
   if (biii.size() < 20) {
     biii.add(new Block(3));
@@ -76,7 +63,7 @@ void draw() {
     Block b3 = biii.get(i);
     b3.display((b3.wd/2) + (i*b3.wd), (5*b3.ht/2));
   }
-  
+
   //create fourth row of blocks
   if (biv.size() < 20) {
     biv.add(new Block(2));
@@ -85,7 +72,7 @@ void draw() {
     Block b4 = biv.get(i);
     b4.display((b4.wd/2) + (i*b4.wd), (7*b4.ht/2));
   }
-  
+
   //create fifth row of blocks
   if (bv.size() < 20) {
     bv.add(new Block(1));
