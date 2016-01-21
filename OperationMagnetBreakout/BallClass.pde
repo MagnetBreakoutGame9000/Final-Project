@@ -2,6 +2,7 @@ class Ball {
   PVector loc;
   PVector vel;
   int diam;
+
   Ball(float x, float y) {
     loc = new PVector(x, y);
     vel = new PVector(3, 4);
@@ -32,7 +33,7 @@ class Ball {
   }
 
   boolean isInContactWith(Paddle pad) {
-    if (loc.y + diam >= pad.loc.y - pad.h && loc.x >= pad.loc.x && loc.x <= pad.loc.x + pad.b) {
+    if (loc.y + diam/2 >= pad.loc.y - pad.h && loc.x >= pad.loc.x && loc.x <= pad.loc.x + pad.b) {
       return true;
     } else {
       return false;
