@@ -6,11 +6,14 @@ class Pill { //<>//
   //create integer for the pill's diameter
   int diam;
 
-  Pill(float x, float y) {
+  Pill(float x, float y, float t) {
     //initialize the location (defined by the variables in the expression above) and the velocity
     loc = new PVector(x, y);
     vel = new PVector(0, 1);
-
+    
+    //create variable to randomize the type of the power-up that is generated
+    t = random(0,10);
+    
     //initialize the diameter of the pill
     diam = 15;
   }
