@@ -39,11 +39,12 @@ void draw() {
     text("- Press left and right arrow keys on the keyboard to move the paddle.", width/2, height/2 + 20); //Instruction 2
     text("- To activate a powerup, press the spacebar.", width/2, height/2 + 40); //Instruction 2
     text(" - Press 's' key to play", width/2, height/2 +70);
+    if (keyPressed == true && key == 's') { //If s key pressed, exits starting menu and starts game
+      menu = 1;
+    }
   }
 
-  if (keyPressed == true && key == 's') { //If s key pressed, exits starting menu and starts game
-    menu = 1;
-  } else if (menu==1) {
+   else if (menu==1) {
     p.move();  //move paddle according to player input
     p.display();  //display paddle
     b.move();  //move ball
@@ -66,11 +67,16 @@ void draw() {
       //    b1.health--;
       //  }
       //}
-      if (b.loc.x + b.diam/2 > b1.loc.x && b.loc.x - b.diam/2 < b1.loc.x + b1.wd && b.loc.y + b.diam/2 > b1.loc.y && b.loc.y - b.diam/2 < b1.loc.y + b1.ht) {
-        //if (b1.health < 0) {
+      //if (b.loc.x + b.diam/2 > b1.loc.x && b.loc.x - b.diam/2 < b1.loc.x + b1.wd && b.loc.y + b.diam/2 > b1.loc.y && b.loc.y - b.diam/2 < b1.loc.y + b1.ht) {
+      //  //if (b1.health < 0) {
+      //  bi.remove(i);
+      //  b.vel.y *= -1;
+      //  //}
+      //}
+      if (b.loc.x >= b1.loc.x && b.loc.x <= b1.loc.x + b1.wd && b.loc.y - b.diam/2 <= b1.loc.y){
         bi.remove(i);
         b.vel.y *= -1;
-        //}
+        b1.hasPowerUp();
       }
     }
   }
