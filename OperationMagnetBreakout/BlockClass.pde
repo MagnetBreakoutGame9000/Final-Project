@@ -54,4 +54,16 @@ class Block {
     //draw block centered on given point
     rect(loc.x-(wd/2), loc.y-(ht/2), wd, ht);
   }
+  
+  boolean hasPowerUp(){
+    float number = random(100);
+    number = round(number);
+    if(number > 90){
+      println("YES!");
+      return true;
+    }
+    else{
+      return false;
+    }
+  }
 }

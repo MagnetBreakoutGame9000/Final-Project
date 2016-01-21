@@ -70,6 +70,10 @@ void draw() {
         //if (b1.health < 0) {
         bi.remove(i);
         b.vel.y *= -1;
+        if (b1.hasPowerUp()){
+          
+        }
+        
         //}
       }
     }
