@@ -1,6 +1,7 @@
 //create arraylists for each row of block
 ArrayList<Block> bi;
 
+
 float menu;   //starting menu =  menu 0, game code = menu 1, pause menu = menu 2
 
 Paddle p;  //initialize object from the Paddle class
