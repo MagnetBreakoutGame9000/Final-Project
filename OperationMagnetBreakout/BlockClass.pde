@@ -58,7 +58,7 @@ class Block {
   boolean hasPowerUp(){
     float number = random(100);
     number = round(number);
-    if(number > 90){
+    if(number > 10){
       println("YES!");
       return true;
     }

@@ -1,11 +1,11 @@
 //create arraylists for each row of block
 ArrayList<Block> bi;
 
-
 float menu;   //starting menu =  menu 0, game code = menu 1, pause menu = menu 2
 
 Paddle p;  //initialize object from the Paddle class
 Ball b;  //initialize object from the Ball class
+Pill q;
 
 void setup() {
   //define size of canvas
@@ -18,7 +18,6 @@ void setup() {
 
   //define arraylists after the size has been defined
   bi = new ArrayList<Block>();
-
 
   for (int x = 27; x < width; x+= 55) {
     for (int y = 0; y < 5; y++) {
@@ -57,6 +56,8 @@ void draw() {
 
     //create first row of blocks
 
+
+    
     for (int i = bi.size() - 1; i >= 0; i--) {
       Block b1 = bi.get(i);
       b1.display();
@@ -73,7 +74,9 @@ void draw() {
         
         //randomly generate a power-up
         if (b1.hasPowerUp()){
-          
+          q = new Pill(b1.loc.x,b1.loc.y,random(0,10));
+          q.display();
+          q.move();
         }
         
         //}
