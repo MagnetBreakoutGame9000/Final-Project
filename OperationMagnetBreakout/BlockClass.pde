@@ -9,6 +9,10 @@ class Block {
   float g;
   float b;
   color c;
+  float top;
+  float right;
+  float bottom;
+  float left;
 
   //create the block with variables for its health and its r, g, and b color values
   Block(int x, int y, int h) {
@@ -20,6 +24,11 @@ class Block {
 
     //assign the value "h" to its health
     health = h;
+    
+    top = loc.y;
+    right = loc.x + wd;
+    bottom = loc.y + ht;
+    left = loc.x;
 
     if (h == 5) {
       r = 150;

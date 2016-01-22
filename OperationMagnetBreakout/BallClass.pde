@@ -2,10 +2,18 @@ class Ball {
   PVector loc;
   PVector vel;
   int diam;
+  float top;
+  float right;
+  float bottom;
+  float left;
   Ball(float x, float y) {
     loc = new PVector(x, y);
     vel = new PVector(3, 4);
     diam = 20;
+    top = loc.y - diam/2;
+    right = loc.x + diam/2;
+    bottom = loc.y + diam/2;
+    left = loc.x - diam/2;
   }
 
   void display() {
@@ -40,15 +48,15 @@ class Ball {
   }
 
   boolean isTouchingTopOrBottom(Block b2) {
-    if ((b.loc.x >= b2.loc.x && b.loc.x <= b2.loc.x + b2.wd && b.loc.y - b.diam/2 <= b2.loc.y + b2.ht) || (b.loc.x >= b2.loc.x && b.loc.x <= b2.loc.x + b2.wd && b.loc.y + b.diam/2 >= b2.loc.y)){
+    if ((loc.x >= b2.loc.x && loc.x <= b2.loc.x + b2.wd && loc.y - diam/2 <= b2.loc.y + b2.ht) || (loc.x >= b2.loc.x && loc.x <= b2.loc.x + b2.wd && loc.y + diam/2 >= b2.loc.y)) {
       return true;
     } else {
       return false;
     }
   }
-  
+
   boolean isTouchingLeftOrRight(Block b2) {
-    if((b.loc.y >= b2.loc.y && b.loc.y <= b2.loc.y + b2.ht && b.loc.x >= b2.loc.x) || (b.loc.y >= b2.loc.y && b.loc.y <= b2.loc.y + b2.ht && b.loc.x <= b2.loc.x + b2.wd)){
+    if ((loc.y >= b2.loc.y && loc.y <= b2.loc.y + b2.ht && loc.x >= b2.loc.x) || (loc.y >= b2.loc.y && loc.y <= b2.loc.y + b2.ht && loc.x <= b2.loc.x + b2.wd)) {
       return true;
     } else {
       return false;
