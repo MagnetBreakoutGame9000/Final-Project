@@ -64,6 +64,8 @@ void draw() {
       //    b1.health--;
       //  }
       //}
+      q = new Pill(b1.loc.x, b1.loc.y, random(0, 10));
+      
       if (b.loc.x + b.diam/2 > b1.loc.x && b.loc.x - b.diam/2 < b1.loc.x + b1.wd && b.loc.y + b.diam/2 > b1.loc.y && b.loc.y - b.diam/2 < b1.loc.y + b1.ht) {
         //if (b1.health < 0) {
         b.vel.y *= -1;
@@ -71,7 +73,6 @@ void draw() {
         
         //randomly generate a power-up
         if (b1.hasPowerUp()) {
-          q = new Pill(b1.loc.x, b1.loc.y, random(0, 10));
           q.display();
           q.move();
         }
@@ -80,10 +81,10 @@ void draw() {
       }
     }
   }
+  
   //if (b.loc.x > b1.loc.x && b.loc.x < b1.loc.x + b1.wd && b.loc.y + b.diam/2 > b1.loc.y){
   // b.vel.y *= -1;
   //}
-
 
   if (p.loc.x + p.b > width) {
     p.loc.x = width - p.b;
