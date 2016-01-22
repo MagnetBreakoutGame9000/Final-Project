@@ -53,10 +53,7 @@ void draw() {
       b.vel.x = map(b.loc.x - p.loc.x, 0, 100, -5, 5);
     }
 
-
     //create first row of blocks
-
-
 
     for (int i = bi.size() - 1; i >= 0; i--) {
       Block b1 = bi.get(i);
