@@ -70,6 +70,8 @@ void draw() {
         //if (b1.health < 0) {
         bi.remove(i);
         b.vel.y *= -1;
+        
+        //randomly generate a power-up
         if (b1.hasPowerUp()){
           
         }
