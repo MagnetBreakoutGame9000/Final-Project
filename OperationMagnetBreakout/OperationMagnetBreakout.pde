@@ -47,17 +47,17 @@ void draw() {
   } else if (menu==1) {
     fill(255); //make fill of the bar white
     rect(0, 4.7*height/5, width, 4.75*height/5); //make bar at the bottom of the screen for health hearts
-    imageMode(CENTER);
-    if (health == 3) {
+    imageMode(CENTER); //use the center of the image for the starting point
+    if (health == 3) { //if full health, display three hearts
       image(heart, 30, height-20, 30, 30);
       image(heart, 65, height-20, 30, 30);
       image(heart, 100, height-20, 30, 30);
     }
-    if (health == 2) {
+    if (health == 2) { //if loss of 1 health, only display 2 hearts
       image(heart, 30, height-20, 30, 30);
       image(heart, 65, height-20, 30, 30);
     }
-    if (health == 1) {
+    if (health == 1) { // if loss of 2 healths, only display 1 heart
       image(heart, 30, height-20, 30, 30);
     }
     p.move();  //move paddle according to player input
