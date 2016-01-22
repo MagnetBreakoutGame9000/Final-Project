@@ -27,6 +27,12 @@ void setup() {
       bi.add(new Block(x, 10 + y * 20, 5-y));
     }
   }
+
+  for (int x = 27; x < width; x+= 55) {
+    for (int y = 0; y < 5; y++) {
+      q.add(new Pill(x, 10 + y * 20, 5-y));
+    }
+  }
 }
 
 void draw() {
@@ -58,34 +64,33 @@ void draw() {
 
     //create first row of blocks
 
+    //THIS IS THE ISSUE!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
     for (int i = bi.size() - 1; i >= 0; i--) {
-      for (int j = q.size(); j <= 10; j++) {
-        Block b1 = bi.get(i);
-        b1.display();
-        //if (b.loc.x > b1.loc.x && b.loc.x < b1.loc.x + b1.wd && b.loc.y - b.diam/2 < b1.loc.y + b1.ht) {
-        //  if(b1.health > 0){
-        //    b.vel.y *= -1;
-        //    b1.health--;
-        //  }
-        //}
-        Pill q1 = q.get(j);
+      Block b1 = bi.get(i);
+      b1.display();
+      //if (b.loc.x > b1.loc.x && b.loc.x < b1.loc.x + b1.wd && b.loc.y - b.diam/2 < b1.loc.y + b1.ht) {
+      //  if(b1.health > 0){
+      //    b.vel.y *= -1;
+      //    b1.health--;
+      //  }
+      //}
+      Pill q1 = q.get(i);
 
-        if (b.loc.x + b.diam/2 > b1.loc.x && b.loc.x - b.diam/2 < b1.loc.x + b1.wd && b.loc.y + b.diam/2 > b1.loc.y && b.loc.y - b.diam/2 < b1.loc.y + b1.ht) {
-          //if (b1.health < 0) {
-          b.vel.y *= -1;
-          bi.remove(i);
+      if (b.loc.x + b.diam/2 > b1.loc.x && b.loc.x - b.diam/2 < b1.loc.x + b1.wd && b.loc.y + b.diam/2 > b1.loc.y && b.loc.y - b.diam/2 < b1.loc.y + b1.ht) {
+        //if (b1.health < 0) {
+        b.vel.y *= -1;
+        bi.remove(i);
 
-          //randomly generate a power-up
-          if (b1.hasPowerUp()) {
-            q.add(new Pill(b1.loc.x, b1.loc.y, random(0, 10)));
-            q1.display();
-            q1.move();
-          }
+        //randomly generate a power-up
+        if (b1.hasPowerUp()) {
+          q1.display();
+          q1.move();
         }
-        //}
       }
+      //}
     }
   }
+
 
   //if (b.loc.x > b1.loc.x && b.loc.x < b1.loc.x + b1.wd && b.loc.y + b.diam/2 > b1.loc.y){
   // b.vel.y *= -1;
