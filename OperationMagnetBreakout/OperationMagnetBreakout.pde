@@ -5,7 +5,7 @@ float menu;   //starting menu =  menu 0, game code = menu 1, pause menu = menu 2
 
 Paddle p;  //initialize object from the Paddle class
 Ball b;  //initialize object from the Ball class
-Pill q;
+Pill q; //initialize powerup from the Pill class
 
 void setup() {
   //define size of canvas
