@@ -4,7 +4,7 @@ class Paddle {
   int h;
 
   Paddle() {
-    loc = new PVector(width/2, height-h);
+    loc = new PVector(width/2, 4.7*height/5-h);
     b = 100;
     h = 20;
   }

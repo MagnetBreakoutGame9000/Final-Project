@@ -20,7 +20,7 @@ class Ball {
     if (loc.y - diam/2 <= 0) {
       vel.y *= -1;
     }
-    if (loc.y + diam/2 >= height) {
+    if (loc.y + diam/2 >= 4.7*height/5) {
       vel.y *= -1;
     }
     if (loc.x - diam/2 <= 0) {

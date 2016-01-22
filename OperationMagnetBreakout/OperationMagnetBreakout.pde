@@ -43,6 +43,8 @@ void draw() {
   if (keyPressed == true && key == 's') { //If s key pressed, exits starting menu and starts game
     menu = 1;
   } else if (menu==1) {
+    fill(255);
+    rect(0,4.7*height/5, width, 4.75*height/5);
     p.move();  //move paddle according to player input
     p.display();  //display paddle
     b.move();  //move ball
