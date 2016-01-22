@@ -57,7 +57,7 @@ void draw() {
     //create first row of blocks
 
 
-    
+
     for (int i = bi.size() - 1; i >= 0; i--) {
       Block b1 = bi.get(i);
       b1.display();
@@ -71,14 +71,14 @@ void draw() {
         //if (b1.health < 0) {
         bi.remove(i);
         b.vel.y *= -1;
-        
+
         //randomly generate a power-up
-        if (b1.hasPowerUp()){
-          q = new Pill(b1.loc.x,b1.loc.y,random(0,10));
+        if (b1.hasPowerUp()) {
+          q = new Pill(b1.loc.x, b1.loc.y, random(0, 10));
           q.display();
           q.move();
         }
-        
+
         //}
       }
     }

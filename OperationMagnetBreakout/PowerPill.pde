@@ -10,10 +10,10 @@ class Pill { //<>//
     //initialize the location (defined by the variables in the expression above) and the velocity
     loc = new PVector(x, y);
     vel = new PVector(0, 1);
-    
+
     //create variable to 
-    
-    
+
+
     //initialize the diameter of the pill
     diam = 15;
   }
