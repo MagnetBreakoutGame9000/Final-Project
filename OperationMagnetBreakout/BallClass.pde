@@ -38,4 +38,20 @@ class Ball {
       return false;
     }
   }
+
+  boolean isTouchingTopOrBottom(Block b2) {
+    if ((b.loc.x >= b2.loc.x && b.loc.x <= b2.loc.x + b2.wd && b.loc.y - b.diam/2 <= b2.loc.y + b2.ht) || (b.loc.x >= b2.loc.x && b.loc.x <= b2.loc.x + b2.wd && b.loc.y + b.diam/2 >= b2.loc.y)){
+      return true;
+    } else {
+      return false;
+    }
+  }
+  
+  boolean isTouchingLeftOrRight(Block b2) {
+    if((b.loc.y >= b2.loc.y && b.loc.y <= b2.loc.y + b2.ht && b.loc.x >= b2.loc.x) || (b.loc.y >= b2.loc.y && b.loc.y <= b2.loc.y + b2.ht && b.loc.x <= b2.loc.x + b2.wd)){
+      return true;
+    } else {
+      return false;
+    }
+  }
 }

@@ -38,7 +38,7 @@ void draw() {
     text("- Press any key to start the ball moving.", width/2, height/2); //Instruction 1
     text("- Press left and right arrow keys on the keyboard to move the paddle.", width/2, height/2 + 20); //Instruction 2
     text("- To activate a powerup, press the spacebar.", width/2, height/2 + 40); //Instruction 2
-    text(" - Press 's' key to play", width/2, height/2 +70);
+    text("- Press 's' key to play", width/2, height/2 +70);
     if (keyPressed == true && key == 's') { //If s key pressed, exits starting menu and starts game
       menu = 1;
     }
@@ -73,10 +73,17 @@ void draw() {
       //  b.vel.y *= -1;
       //  //}
       //}
-      if (b.loc.x >= b1.loc.x && b.loc.x <= b1.loc.x + b1.wd && b.loc.y - b.diam/2 <= b1.loc.y){
-        bi.remove(i);
+      if (b.isTouchingTopOrBottom(b1)){
+        bi.remove(b1);
         b.vel.y *= -1;
         b1.hasPowerUp();
+        println(b1.loc.y);
+      }
+      else if (b.isTouchingLeftOrRight(b1)){
+        bi.remove(b1);
+        b.vel.x *= -1;
+        b1.hasPowerUp();
+        println(b1.loc.x);
       }
     }
   }
