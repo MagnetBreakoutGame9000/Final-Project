@@ -21,6 +21,7 @@ class Block {
     //assign the value "h" to its health
     health = h;
 
+    //assign different colours for each level of health that the block has; 
     if (h == 5) {
       r = 150;
       g = 0;
