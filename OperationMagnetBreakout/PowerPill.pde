@@ -30,6 +30,7 @@ class Pill { //<>//
 
   //create boolean to detect whether the paddle is in contact wit
   boolean isCollectedBy(Paddle pad) {
+    //if the pill's area intersects the paddle's area, give the "TRUE" value; if not, return the "FALSE"
     if (loc.y + diam >= pad.loc.y - pad.h && loc.x >= pad.loc.x && loc.x <= pad.loc.x + pad.b) {
       return true;
     } else {
