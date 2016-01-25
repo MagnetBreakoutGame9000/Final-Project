@@ -1,8 +1,8 @@
 //create arraylists for each row of block
 ArrayList<Block> bi;
-PImage heart;
+PImage heart; //declare variable for the hearts
 int menu;   //starting menu =  menu 0, game code = menu 1, pause menu = menu 2
-int health; //
+int health; //declare variable for the block health
 Paddle p;  //initialize object from the Paddle class
 Ball b;  //initialize object from the Ball class
 
