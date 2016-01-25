@@ -1,8 +1,8 @@
 //create arraylists for each row of block
 ArrayList<Block> bi;
-
-float menu;   //starting menu =  menu 0, game code = menu 1, pause menu = menu 2
-
+PImage heart;
+int menu;   //starting menu =  menu 0, game code = menu 1, pause menu = menu 2
+int health; //
 Paddle p;  //initialize object from the Paddle class
 Ball b;  //initialize object from the Ball class
 
@@ -24,6 +24,8 @@ void setup() {
       bi.add(new Block(x, 10 + y * 20, 5-y));
     }
   }
+  heart = loadImage("Heartlife.png");
+  health = 3;
 }
 
 void draw() {
@@ -43,6 +45,21 @@ void draw() {
   if (keyPressed == true && key == 's') { //If s key pressed, exits starting menu and starts game
     menu = 1;
   } else if (menu==1) {
+    fill(255); //make fill of the bar white
+    rect(0, 4.7*height/5, width, 4.75*height/5); //make bar at the bottom of the screen for health hearts
+    imageMode(CENTER); //use the center of the image for the starting point
+    if (health == 3) { //if full health, display three hearts
+      image(heart, 30, height-20, 30, 30);
+      image(heart, 65, height-20, 30, 30);
+      image(heart, 100, height-20, 30, 30);
+    }
+    if (health == 2) { //if loss of 1 health, only display 2 hearts
+      image(heart, 30, height-20, 30, 30);
+      image(heart, 65, height-20, 30, 30);
+    }
+    if (health == 1) { // if loss of 2 healths, only display 1 heart
+      image(heart, 30, height-20, 30, 30);
+    }
     p.move();  //move paddle according to player input
     p.display();  //display paddle
     b.move();  //move ball
@@ -52,8 +69,13 @@ void draw() {
       b.vel.y *= -1;
       b.vel.x = map(b.loc.x - p.loc.x, 0, 100, -5, 5);
     }
-
-
+    //if ball touches the bottle of the game window, 1 life is lost
+    if(b.loc.y + b.diam/2 >= 4.7*height/5) {
+      health -= 1;
+    }
+    if(health <= 0){
+      menu = 2;
+    }
     //create first row of blocks
 
     for (int i = bi.size() - 1; i >= 0; i--) {
