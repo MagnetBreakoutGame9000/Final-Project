@@ -69,8 +69,9 @@ void draw() {
       b.vel.y *= -1;
       b.vel.x = map(b.loc.x - p.loc.x, 0, 100, -5, 5);
     }
-
-
+    if(loc.y + diam/2 >= 4.7*height/5) {
+      health -= 1;
+    }
     //create first row of blocks
 
     for (int i = bi.size() - 1; i >= 0; i--) {
