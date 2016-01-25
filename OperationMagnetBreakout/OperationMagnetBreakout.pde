@@ -39,7 +39,8 @@ void draw() {
     textSize(20); //sets size of the rest of the text to a smaller size than the title
     text("- Press left and right arrow keys on the keyboard to move the paddle.", width/2, height/2 + 20); //Instruction 2
     text("- To activate a powerup, press the spacebar.", width/2, height/2 + 40); //Instruction 2
-    text(" - Press 's' key to play", width/2, height/2 +70);
+    text(" - If ball is reset, press 'a' to move it again.", width/2, height/2+60);
+    text(" - Press 's' key to play.", width/2, height/2 +80);
   }
 
   if (keyPressed == true && key == 's') { //If s key pressed, exits starting menu and starts game
@@ -75,8 +76,10 @@ void draw() {
       b.reset();
       p.reset();
       if (keyPressed == true && key == 'a') {
-        b.vel = new PVector(3, 4);
+        b.vel.y = 3;
+        b.vel.x = 4;
         b.move();
+        b.bounce();
       }
     }
     if (health <= 0) {

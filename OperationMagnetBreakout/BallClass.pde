@@ -32,7 +32,7 @@ class Ball {
   }
   void reset(){
    loc.x = width/2;
-   loc.y = 4.7*height/5-31;
+   loc.y = 4.7*height/5-30;
    vel.x = 0;
    vel.y = 0;
   }
