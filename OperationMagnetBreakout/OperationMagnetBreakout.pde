@@ -70,12 +70,16 @@ void draw() {
       b.vel.x = map(b.loc.x - p.loc.x, 0, 100, -5, 5);
     }
     //if ball touches the bottle of the game window, 1 life is lost
-    if(b.loc.y + b.diam/2 >= 4.7*height/5) {
+    if (b.loc.y + b.diam/2 >= 4.7*height/5) {
       health -= 1;
       b.reset();
       p.reset();
+      if (keyPressed == true && key == 'a') {
+        b.vel = new PVector(3, 4);
+        b.move();
+      }
     }
-    if(health <= 0){
+    if (health <= 0) {
       menu = 2;
     }
     //create first row of blocks

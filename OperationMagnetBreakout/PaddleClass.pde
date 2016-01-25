@@ -27,7 +27,7 @@ class Paddle {
     }
   }
   void reset(){
-    loc.x = width/2 + b/2;
+    loc.x = width/2 - b/2;
     loc.y = 4.7*height/5;
   }
 }
