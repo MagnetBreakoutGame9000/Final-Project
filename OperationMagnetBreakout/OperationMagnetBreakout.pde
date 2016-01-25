@@ -69,8 +69,12 @@ void draw() {
       b.vel.y *= -1;
       b.vel.x = map(b.loc.x - p.loc.x, 0, 100, -5, 5);
     }
+    //if ball touches the bottle of the game window, 1 life is lost
     if(b.loc.y + b.diam/2 >= 4.7*height/5) {
       health -= 1;
+    }
+    if(health <= 0){
+      menu = 2;
     }
     //create first row of blocks
 
