@@ -30,6 +30,9 @@ class Ball {
       vel.x *= -1;
     }
   }
+  void reset(){
+   
+  }
 
   boolean isInContactWith(Paddle pad) {
     if (loc.y + diam/2 >= pad.loc.y - pad.h && loc.x >= pad.loc.x && loc.x <= pad.loc.x + pad.b) {

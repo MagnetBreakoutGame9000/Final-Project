@@ -75,6 +75,7 @@ void draw() {
     }
     if(health <= 0){
       menu = 2;
+      b.reset();
     }
     //create first row of blocks
 
