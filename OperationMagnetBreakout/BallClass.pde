@@ -31,7 +31,10 @@ class Ball {
     }
   }
   void reset(){
-   
+   loc.x = width/2;
+   loc.y = 4.7*height/5-31;
+   vel.x = 0;
+   vel.y = 0;
   }
 
   boolean isInContactWith(Paddle pad) {
