@@ -1,6 +1,7 @@
 //create arraylists for each row of block
 ArrayList<Block> bi;
 PImage heart; //declare variable for the hearts
+PImage colorful; //declare image for background
 int menu;   //starting menu =  menu 0, game code = menu 1, pause menu = menu 2
 int health; //declare variable for the block health
 Paddle p;  //initialize object from the Paddle class
@@ -11,13 +12,16 @@ void setup() {
   size(1100, 700);
 
   menu = 0; //original menu that pops up is the starting menu with the instructions for the user
+  
+  imageMode(CENTER);                                                    //center image placement
+  colorful = loadImage("colorful.jpg");                                 //load image of colorful explosion
+
 
   p = new Paddle();
   b = new Ball(width/2, height/2);
 
   //define arraylists after the size has been defined
   bi = new ArrayList<Block>();
-
 
   for (int x = 27; x < width; x+= 55) {
     for (int y = 0; y < 5; y++) {
@@ -70,10 +74,10 @@ void draw() {
       b.vel.x = map(b.loc.x - p.loc.x, 0, 100, -5, 5);
     }
     //if ball touches the bottle of the game window, 1 life is lost
-    if(b.loc.y + b.diam/2 >= 4.7*height/5) {
+    if (b.loc.y + b.diam/2 >= 4.7*height/5) {
       health -= 1;
     }
-    if(health <= 0){
+    if (health <= 0) {
       menu = 2;
     }
     //create first row of blocks
