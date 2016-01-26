@@ -28,13 +28,13 @@ void setup() {
     }
   }
 
-  for (int x = 27; x < width; x+= 55) {
-    for (int y = 0; y < 5; y++) {
-      q.add(new Pill(x, 10 + y * 20, 5-y));
-    }
-  }
+  //for (int x = 27; x < width; x+= 55) {
+  // for (int y = 0; y < 5; y++) {
+  //   q.add(new Pill(x, 10 + y * 20, 5-y));
+  // }
+  //}
 }
-
+//
 void draw() {
   background(0);
 
@@ -74,7 +74,6 @@ void draw() {
       //    b1.health--;
       //  }
       //}
-      Pill q1 = q.get(i);
 
       if (b.loc.x + b.diam/2 > b1.loc.x && b.loc.x - b.diam/2 < b1.loc.x + b1.wd && b.loc.y + b.diam/2 > b1.loc.y && b.loc.y - b.diam/2 < b1.loc.y + b1.ht) {
         //if (b1.health < 0) {
@@ -83,13 +82,19 @@ void draw() {
 
         //randomly generate a power-up
         if (b1.hasPowerUp()) {
-          q1.display();
-          q1.move();
+          q.add(new Pill(b1.loc.x,b1.loc.y,random(10)));
         }
       }
       //}
     }
+    //spawn a pill if the hasPowerUp function returns true when a block is hit
+    for (int i = q.size() - 1; i >= 0; i--) {
+      Pill q1 = q.get(i);
+      q1.display();
+      q1.move();
+    }
   }
+
 
 
   //if (b.loc.x > b1.loc.x && b.loc.x < b1.loc.x + b1.wd && b.loc.y + b.diam/2 > b1.loc.y){
