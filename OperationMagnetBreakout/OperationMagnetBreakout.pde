@@ -86,51 +86,51 @@ void draw() {
     }
 
     for (int i = bi.size() - 1; i >= 0; i--) { //create a number of blocks of the given size
-    
+
       //name each individual block "b1"
       Block b1 = bi.get(i);
-      
+
       //display each individual block
       b1.display();
-      
+
       //if the ball intersects a block
       if (b.loc.x + b.diam/2 > b1.loc.x && b.loc.x - b.diam/2 < b1.loc.x + b1.wd/2 && b.loc.y + b.diam/2 > b1.loc.y && b.loc.y - b.diam/2 < b1.loc.y + b1.ht/2) {
-        
+
         //if health is equal to one at the time of contact
         if (b1.health == 1) {
-          
+
           //reverse the velocity of the ball and remove the block from the arraylist
           b.vel.y *= -1;
           bi.remove(i);
-          
-         //if health is more than one at the time of contact
+
+          //if health is more than one at the time of contact
         } else if (b1.health > 1) {
-          
+
           //reverse the direction of the block
           b.vel.y *= -1;
-          
+
           //subtract 1 health from the block
           b1.health--;
-          
+
           //if the block is purple, change its color to blue
           if (b1.r == 150 && b1.g == 0 && b1.b == 255) {
             b1.r = 0;
             b1.g = 0;
             b1.b = 255;
-            
-          //if the block is blue, change its color to green
+
+            //if the block is blue, change its color to green
           } else if (b1.r == 0 && b1.g == 0 && b1.b == 255) {
             b1.r = 0;
             b1.g = 255;
             b1.b = 0;
-            
-          //if the block is green, change its color to yellow
+
+            //if the block is green, change its color to yellow
           } else if (b1.r == 0 && b1.g == 255 && b1.b == 0) {
             b1.r = 255;
             b1.g = 255;
             b1.b = 0;
-            
-          //if the block is yellow, change its color to red
+
+            //if the block is yellow, change its color to red
           } else if (b1.r == 255 && b1.g == 255 && b1.b == 0) {
             b1.r = 255;
             b1.g = 0;
@@ -149,9 +149,10 @@ void draw() {
   //spawn a pill if the hasPowerUp function returns true when a block is hit
   for (int i = q.size() - 1; i >= 0; i--) {
     Pill q1 = q.get(i);
-    q1.display();
-    q1.move();
-
+    if (b1.hasPowerUp) {
+      q1.display();
+      q1.move();
+    }
     if (q1.isCollectedBy()) {
 
       float t = random(1, 6); //create variable for type of powerup

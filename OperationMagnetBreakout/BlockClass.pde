@@ -45,9 +45,20 @@ class Block {
 
   void display() {
     //color block
-    fill(r,g,b);
+    fill(r, g, b);
     stroke(0);
     //draw block centered on given point
     rect(loc.x-(wd/2), loc.y-(ht/2), wd, ht);
+  }
+
+  boolean hasPowerUp() {
+    float number = random(100);
+    number = round(number);
+    if (number < 10) {
+      println("YES!");
+      return true;
+    } else {
+      return false;
+    }
   }
 }
