@@ -177,8 +177,8 @@ void draw() {
       } else if (t == 6) {
         b.vel.mult(1.1); //increase the movement speed of the ball
       }
+      q.remove(i); //remove the pill from the arrayList
     }
-    q1.remove(); //remove the pill from the arrayList
   }
   
   if (lz > 0) {
