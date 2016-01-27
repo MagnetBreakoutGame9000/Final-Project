@@ -167,13 +167,13 @@ void draw() {
       } else if (t == 2) { //decrease the length of the paddle
         p.b = p.b - 10;
       } else if (t == 3) {
-        //p.vel.add(ad); //increase the movement speed of the paddle
+        p.mov.add(ad); //increase the movement speed of the paddle
       } else if (t == 4) {
-        //p.vel.sub(ad);
+        p.mov.sub(ad); //decrease the movement speed of the paddle
       } else if (t == 5) {
-        //LASER!!!
+        //LASER!!! //enable access to the laser of laserdom
       } else if (t == 6) {
-        b.vel.mult(1.1);
+        b.vel.mult(1.1); //increase the movement speed of the ball
       }
     }
   }
