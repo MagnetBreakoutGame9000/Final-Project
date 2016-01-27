@@ -1,6 +1,9 @@
 //create arraylist for each row of block
 ArrayList<Block> bi;
 
+//create arraylist for laser
+ArrayList<Laser> li;
+
 //create arraylist for power pills
 ArrayList<Pill> q;
 
@@ -18,9 +21,10 @@ void setup() {
   p = new Paddle();
   b = new Ball(width/2, height/2);
 
-  //define arraylists after the size has been defined
+  //define arraylists for laser, block, and powerpills
   bi = new ArrayList<Block>();
   q = new ArrayList<Pill>();
+  li = new ArrayList<Laser>();    
 
   for (int x = 27; x < width; x+= 55) {
     for (int y = 0; y < 5; y++) {
@@ -76,7 +80,6 @@ void draw() {
 
         //randomly generate a power-up
         if (b1.hasPowerUp()) {
-
         }
       }
       //}
@@ -86,25 +89,74 @@ void draw() {
       Pill q1 = q.get(i);
       q1.display();
       q1.move();
-      
-      if(q1.isCollectedBy()){
-        
-        float t = random(0,10); //create variable for type of powerup
-        PVector pls = new PVector(2,0); //create new vector to be added to the 
-        
+
+      if (q1.isCollectedBy()) {
+
+        float t = random(1, 6); //create variable for type of powerup
+        t = round(t);
+        PVector pls = new PVector(2, 0); //create new vector to be added to the 
+
         //create list of power-ups to be collected by the paddle
-        if(t <= 1){ //increase the length of the paddle
+        if (t == 1) { //increase the length of the paddle
           p.b = p.b + 10;
-        }else if(1 < t <= 2){ //decrease the length of the paddle
+        } else if (t == 2) { //decrease the length of the paddle
           p.b = p.b - 10;
-        }else if(2 < t <= 3){
+        } else if (t == 3) {
           //p.vel.add(pls); //increase the movement speed of the paddle
-        }else if(3 < t <= 4){
+        } else if (t == 4) {
           //p.vel.sub(pls);
-        }else if(4 < t <= 5){
+        } else if (t == 5) {
           //LASER!!!
-        }else if(5 < t <= 6){
+        } else if (t == 6) {
           b.vel.mult(1.1);
+        }
+      }
+    }
+
+    if (keyPressed) {
+      if (key == 'l') {
+        if (li.size() < 2) {
+          Laser l = new Laser(p.loc.x + p.b/2 - 5, height - p.h - 50);
+          li.add(l);
+        }
+      }
+    }
+
+    for (int i = li.size() - 1; i >= 0; i--) {
+      Laser l = li.get(i);
+      l.display();
+      l.move();
+      if (l.loc.y < 0) {
+        li.remove(l);
+      }
+      for (int j = bi.size() - 1; j >= 0; j--) {
+        Block b1 = bi.get(j);
+        if (l.isInContactWith(b1)) {
+          //println("Laser hit at x = " + l.loc.x + " and block was from range x = " + (b1.loc.x - b1.wd/2) + " to " + (b1.loc.x + b1.wd/2) + ".");
+          if (b1.health == 1) {
+            li.remove(l);
+            bi.remove(b1);
+          } else if (b1.health > 1) {
+            li.remove(l);
+            b1.health--;
+            if (b1.r == 150 && b1.g == 0 && b1.b == 255) {
+              b1.r = 0;
+              b1.g = 0;
+              b1.b = 255;
+            } else if (b1.r == 0 && b1.g == 0 && b1.b == 255) {
+              b1.r = 0;
+              b1.g = 255;
+              b1.b = 0;
+            } else if (b1.r == 0 && b1.g == 255 && b1.b == 0) {
+              b1.r = 255;
+              b1.g = 255;
+              b1.b = 0;
+            } else if (b1.r == 255 && b1.g == 255 && b1.b == 0) {
+              b1.r = 255;
+              b1.g = 0;
+              b1.b = 0;
+            }
+          }
         }
       }
     }
