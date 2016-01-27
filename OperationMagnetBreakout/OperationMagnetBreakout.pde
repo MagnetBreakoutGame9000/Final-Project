@@ -103,7 +103,7 @@ void draw() {
           b.vel.y *= -1;
           bi.remove(i);
           
-          
+         //if health is more than one at the time of contact
         } else if (b1.health > 1) {
           
           //reverse the direction of the block
