@@ -84,15 +84,26 @@ void draw() {
     if (health <= 0) {
       menu = 2;
     }
-    //create first row of blocks
 
-    for (int i = bi.size() - 1; i >= 0; i--) {
+    for (int i = bi.size() - 1; i >= 0; i--) { //create a number of blocks of the given size
+    
+      //name each individual block "b1"
       Block b1 = bi.get(i);
+      
+      //display each individual block
       b1.display();
+      
+      //if the ball intersects a block
       if (b.loc.x + b.diam/2 > b1.loc.x && b.loc.x - b.diam/2 < b1.loc.x + b1.wd/2 && b.loc.y + b.diam/2 > b1.loc.y && b.loc.y - b.diam/2 < b1.loc.y + b1.ht/2) {
+        
+        //if health is equal to one at the time of contact
         if (b1.health == 1) {
+          
+          //reverse the velocity of the ball and remove the block from the arraylist
           b.vel.y *= -1;
           bi.remove(i);
+          
+          
         } else if (b1.health > 1) {
           
           //reverse the direction of the block
