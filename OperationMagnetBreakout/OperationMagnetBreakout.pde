@@ -103,6 +103,8 @@ void draw() {
           //p.vel.sub(pls);
         }else if(4 < t <= 5){
           //LASER!!!
+        }else if(5 < t <= 6){
+          b.vel.mult(1.1);
         }
       }
     }
