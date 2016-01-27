@@ -1,5 +1,12 @@
 //create arraylists for each row of block
 ArrayList<Block> bi;
+
+//create arraylist for power pills
+ArrayList<Pill> q;
+
+//create arraylist for laser
+ArrayList<Laser> li;
+
 PImage heart; //declare variable for the hearts
 int menu;   //starting menu =  menu 0, game code = menu 1, pause menu = menu 2
 int health; //declare variable for the block health
@@ -17,7 +24,8 @@ void setup() {
 
   //define arraylists after the size has been defined
   bi = new ArrayList<Block>();
-
+  q = new ArrayList<Pill>();
+  li = new ArrayList<Laser>();  
 
   for (int x = 27; x < width; x+= 55) {
     for (int y = 0; y < 5; y++) {
@@ -64,16 +72,16 @@ void draw() {
     p.display();  //display paddle
     b.move();  //move ball
     b.display();  //display ball
-    b.bounce();
+    b.bounce(); //bounce ball when in contact with walls
     if (b.isInContactWith(p)) {
       b.vel.y *= -1;
       b.vel.x = map(b.loc.x - p.loc.x, 0, 100, -5, 5);
     }
     //if ball touches the bottle of the game window, 1 life is lost
-    if(b.loc.y + b.diam/2 >= 4.7*height/5) {
+    if (b.loc.y + b.diam/2 >= 4.7*height/5) {
       health -= 1;
     }
-    if(health <= 0){
+    if (health <= 0) {
       menu = 2;
     }
     //create first row of blocks
@@ -98,6 +106,83 @@ void draw() {
   //if (b.loc.x > b1.loc.x && b.loc.x < b1.loc.x + b1.wd && b.loc.y + b.diam/2 > b1.loc.y){
   // b.vel.y *= -1;
   //}
+
+  //spawn a pill if the hasPowerUp function returns true when a block is hit
+  for (int i = q.size() - 1; i >= 0; i--) {
+    Pill q1 = q.get(i);
+    q1.display();
+    q1.move();
+
+    if (q1.isCollectedBy()) {
+
+      float t = random(1, 6); //create variable for type of powerup
+      t = round(t);
+      PVector pls = new PVector(2, 0); //create new vector to be added to the 
+
+      //create list of power-ups to be collected by the paddle
+      if (t == 1) { //increase the length of the paddle
+        p.b = p.b + 10;
+      } else if (t == 2) { //decrease the length of the paddle
+        p.b = p.b - 10;
+      } else if (t == 3) {
+        //p.vel.add(pls); //increase the movement speed of the paddle
+      } else if (t == 4) {
+        //p.vel.sub(pls);
+      } else if (t == 5) {
+        //LASER!!!
+      } else if (t == 6) {
+        b.vel.mult(1.1);
+      }
+    }
+  }
+
+  if (keyPressed) {
+    if (key == 'l') {
+      if (li.size() < 2) {
+        Laser l = new Laser(p.loc.x + p.b/2 - 5, height - p.h - 50);
+        li.add(l);
+      }
+    }
+  }
+  
+  for (int i = li.size() - 1; i >= 0; i--) {
+    Laser l = li.get(i);
+    l.display();
+    l.move();
+    if (l.loc.y < 0) {
+      li.remove(l);
+    }
+    for (int j = bi.size() - 1; j >= 0; j--) {
+      Block b1 = bi.get(j);
+      if (l.isInContactWith(b1)) {
+        //println("Laser hit at x = " + l.loc.x + " and block was from range x = " + (b1.loc.x - b1.wd/2) + " to " + (b1.loc.x + b1.wd/2) + ".");
+        if (b1.health == 1) {
+          li.remove(l);
+          bi.remove(b1);
+        } else if (b1.health > 1) {
+          li.remove(l);
+          b1.health--;
+          if (b1.r == 150 && b1.g == 0 && b1.b == 255) {
+            b1.r = 0;
+            b1.g = 0;
+            b1.b = 255;
+          } else if (b1.r == 0 && b1.g == 0 && b1.b == 255) {
+            b1.r = 0;
+            b1.g = 255;
+            b1.b = 0;
+          } else if (b1.r == 0 && b1.g == 255 && b1.b == 0) {
+            b1.r = 255;
+            b1.g = 255;
+            b1.b = 0;
+          } else if (b1.r == 255 && b1.g == 255 && b1.b == 0) {
+            b1.r = 255;
+            b1.g = 0;
+            b1.b = 0;
+          }
+        }
+      }
+    }
+  }
 
 
   if (p.loc.x + p.b > width) {
