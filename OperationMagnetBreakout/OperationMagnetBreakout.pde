@@ -149,7 +149,7 @@ void draw() {
   //spawn a pill if the hasPowerUp function returns true when a block is hit
   for (int i = q.size() - 1; i >= 0; i--) {
     Pill q1 = q.get(i);
-    if (b1.hasPowerUp) {
+    if (bi.hasPowerUp()) {
       q1.display();
       q1.move();
     }
