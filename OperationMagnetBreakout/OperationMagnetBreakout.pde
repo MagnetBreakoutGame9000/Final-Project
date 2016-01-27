@@ -7,6 +7,7 @@ ArrayList<Pill> q;
 //create arraylist for laser
 ArrayList<Laser> li;
 
+int lz; //declare variable for determining if player has access to the laser
 PImage heart; //declare variable for the hearts
 int menu;   //starting menu =  menu 0, game code = menu 1, pause menu = menu 2
 int health; //declare variable for the block health
@@ -17,6 +18,7 @@ void setup() {
   //define size of canvas
   size(1100, 700);
 
+  lz = 0; //initialize lz as 0
   menu = 0; //original menu that pops up is the starting menu with the instructions for the user
 
   p = new Paddle();
@@ -156,7 +158,7 @@ void draw() {
     q1.display();
     q1.move();
     if (q1.isCollectedBy()) {
-
+      
       float t = random(1, 6); //create variable for type of powerup
       t = round(t);
       PVector ad = new PVector(2, 0); //create new vector to be added to the velocity of the paddle
@@ -171,61 +173,64 @@ void draw() {
       } else if (t == 4) {
         p.mov.sub(ad); //decrease the movement speed of the paddle
       } else if (t == 5) {
-        //LASER!!! //enable access to the laser of laserdom
+        lz = 3; //give the player three shots of the laser
       } else if (t == 6) {
         b.vel.mult(1.1); //increase the movement speed of the ball
       }
     }
+    q1.remove(); //remove the pill from the arrayList
   }
-
-  if (keyPressed) {
-    if (key == 'l') {
-      if (li.size() < 2) {
-        Laser l = new Laser(p.loc.x + p.b/2 - 5, height - p.h - 50);
-        li.add(l);
+  
+  if (lz > 0) {
+    if (keyPressed) {
+      if (key == 'l') {
+        if (li.size() < 2) {
+          lz = lz - 1; //subtract 1 from the laser ammo
+          Laser l = new Laser(p.loc.x + p.b/2 - 5, height - p.h - 50);
+          li.add(l);
+        }
       }
     }
-  }
 
-  for (int i = li.size() - 1; i >= 0; i--) {
-    Laser l = li.get(i);
-    l.display();
-    l.move();
-    if (l.loc.y < 0) {
-      li.remove(l);
-    }
-    for (int j = bi.size() - 1; j >= 0; j--) {
-      Block b1 = bi.get(j);
-      if (l.isInContactWith(b1)) {
-        //println("Laser hit at x = " + l.loc.x + " and block was from range x = " + (b1.loc.x - b1.wd/2) + " to " + (b1.loc.x + b1.wd/2) + ".");
-        if (b1.health == 1) {
-          li.remove(l);
-          bi.remove(b1);
-        } else if (b1.health > 1) {
-          li.remove(l);
-          b1.health--;
-          if (b1.r == 150 && b1.g == 0 && b1.b == 255) {
-            b1.r = 0;
-            b1.g = 0;
-            b1.b = 255;
-          } else if (b1.r == 0 && b1.g == 0 && b1.b == 255) {
-            b1.r = 0;
-            b1.g = 255;
-            b1.b = 0;
-          } else if (b1.r == 0 && b1.g == 255 && b1.b == 0) {
-            b1.r = 255;
-            b1.g = 255;
-            b1.b = 0;
-          } else if (b1.r == 255 && b1.g == 255 && b1.b == 0) {
-            b1.r = 255;
-            b1.g = 0;
-            b1.b = 0;
+    for (int i = li.size() - 1; i >= 0; i--) {
+      Laser l = li.get(i);
+      l.display();
+      l.move();
+      if (l.loc.y < 0) {
+        li.remove(l);
+      }
+      for (int j = bi.size() - 1; j >= 0; j--) {
+        Block b1 = bi.get(j);
+        if (l.isInContactWith(b1)) {
+          //println("Laser hit at x = " + l.loc.x + " and block was from range x = " + (b1.loc.x - b1.wd/2) + " to " + (b1.loc.x + b1.wd/2) + ".");
+          if (b1.health == 1) {
+            li.remove(l);
+            bi.remove(b1);
+          } else if (b1.health > 1) {
+            li.remove(l);
+            b1.health--;
+            if (b1.r == 150 && b1.g == 0 && b1.b == 255) {
+              b1.r = 0;
+              b1.g = 0;
+              b1.b = 255;
+            } else if (b1.r == 0 && b1.g == 0 && b1.b == 255) {
+              b1.r = 0;
+              b1.g = 255;
+              b1.b = 0;
+            } else if (b1.r == 0 && b1.g == 255 && b1.b == 0) {
+              b1.r = 255;
+              b1.g = 255;
+              b1.b = 0;
+            } else if (b1.r == 255 && b1.g == 255 && b1.b == 0) {
+              b1.r = 255;
+              b1.g = 0;
+              b1.b = 0;
+            }
           }
         }
       }
     }
   }
-
 
   if (p.loc.x + p.b > width) {
     p.loc.x = width - p.b;
