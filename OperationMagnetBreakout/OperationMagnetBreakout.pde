@@ -89,20 +89,48 @@ void draw() {
     for (int i = bi.size() - 1; i >= 0; i--) {
       Block b1 = bi.get(i);
       b1.display();
-      //if (b.loc.x > b1.loc.x && b.loc.x < b1.loc.x + b1.wd && b.loc.y - b.diam/2 < b1.loc.y + b1.ht) {
-      //  if(b1.health > 0){
-      //    b.vel.y *= -1;
-      //    b1.health--;
-      //  }
-      //}
       if (b.loc.x + b.diam/2 > b1.loc.x && b.loc.x - b.diam/2 < b1.loc.x + b1.wd/2 && b.loc.y + b.diam/2 > b1.loc.y && b.loc.y - b.diam/2 < b1.loc.y + b1.ht/2) {
-        //if (b1.health < 0) {
-        b.vel.y *= -1;
-        bi.remove(i);
-        //}
+        if (b1.health == 1) {
+          b.vel.y *= -1;
+          bi.remove(i);
+        } else if (b1.health > 1) {
+          
+          //reverse the direction of the block
+          b.vel.y *= -1;
+          
+          //subtract 1 health from the block
+          b1.health--;
+          
+          //if the block is purple, change its color to blue
+          if (b1.r == 150 && b1.g == 0 && b1.b == 255) {
+            b1.r = 0;
+            b1.g = 0;
+            b1.b = 255;
+            
+          //if the block is blue, change its color to green
+          } else if (b1.r == 0 && b1.g == 0 && b1.b == 255) {
+            b1.r = 0;
+            b1.g = 255;
+            b1.b = 0;
+            
+          //if the block is green, change its color to yellow
+          } else if (b1.r == 0 && b1.g == 255 && b1.b == 0) {
+            b1.r = 255;
+            b1.g = 255;
+            b1.b = 0;
+            
+          //if the block is yellow, change its color to red
+          } else if (b1.r == 255 && b1.g == 255 && b1.b == 0) {
+            b1.r = 255;
+            b1.g = 0;
+            b1.b = 0;
+          }
+        }
       }
     }
   }
+
+
   //if (b.loc.x > b1.loc.x && b.loc.x < b1.loc.x + b1.wd && b.loc.y + b.diam/2 > b1.loc.y){
   // b.vel.y *= -1;
   //}
@@ -117,7 +145,7 @@ void draw() {
 
       float t = random(1, 6); //create variable for type of powerup
       t = round(t);
-      PVector pls = new PVector(2, 0); //create new vector to be added to the 
+      PVector ad = new PVector(2, 0); //create new vector to be added to the velocity of the paddle
 
       //create list of power-ups to be collected by the paddle
       if (t == 1) { //increase the length of the paddle
@@ -125,9 +153,9 @@ void draw() {
       } else if (t == 2) { //decrease the length of the paddle
         p.b = p.b - 10;
       } else if (t == 3) {
-        //p.vel.add(pls); //increase the movement speed of the paddle
+        //p.vel.add(ad); //increase the movement speed of the paddle
       } else if (t == 4) {
-        //p.vel.sub(pls);
+        //p.vel.sub(ad);
       } else if (t == 5) {
         //LASER!!!
       } else if (t == 6) {
@@ -144,7 +172,7 @@ void draw() {
       }
     }
   }
-  
+
   for (int i = li.size() - 1; i >= 0; i--) {
     Laser l = li.get(i);
     l.display();

@@ -5,7 +5,7 @@ class Laser {
   float ht;
   Laser(float x, float y){
     loc = new PVector(x, y);
-    vel = new PVector(0,-20);
+    vel = new PVector(0,-30);
     wd = 5;
     ht = 50;
   }
