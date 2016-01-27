@@ -6,14 +6,11 @@ class Pill { //<>//
   //create integer for the pill's diameter
   int diam;
 
-  Pill(float x, float y, float t) {
+  Pill(float x, float y) {
     //initialize the location (defined by the variables in the expression above) and the velocity
     loc = new PVector(x, y);
     vel = new PVector(0, 1);
-
-    //create variable to 
-
-
+    
     //initialize the diameter of the pill
     diam = 15;
   }
@@ -29,9 +26,9 @@ class Pill { //<>//
   }
 
   //create boolean to detect whether the paddle is in contact wit
-  boolean isCollectedBy(Paddle pad) {
+  boolean isCollectedBy() {
     //if the pill's area intersects the paddle's area, give the "TRUE" value; if not, return the "FALSE"
-    if (loc.y + diam >= pad.loc.y - pad.h && loc.x >= pad.loc.x && loc.x <= pad.loc.x + pad.b) {
+    if (loc.y + diam >= p.loc.y - p.h && loc.x >= p.loc.x && loc.x <= p.loc.x + p.b) {
       return true;
     } else {
       return false;

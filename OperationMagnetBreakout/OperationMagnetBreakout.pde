@@ -27,16 +27,10 @@ void setup() {
       bi.add(new Block(x, 10 + y * 20, 5-y));
     }
   }
-
-  //for (int x = 27; x < width; x+= 55) {
-  // for (int y = 0; y < 5; y++) {
-  //   q.add(new Pill(x, 10 + y * 20, 5-y));
-  // }
-  //}
 }
-//
+
 void draw() {
-  background(0);
+  background(0); //color background black
 
   if (menu==0) { //starting menu
     background(0);  //background for txt is black
@@ -82,7 +76,7 @@ void draw() {
 
         //randomly generate a power-up
         if (b1.hasPowerUp()) {
-          q.add(new Pill(b1.loc.x,b1.loc.y,random(10)));
+
         }
       }
       //}
@@ -92,6 +86,25 @@ void draw() {
       Pill q1 = q.get(i);
       q1.display();
       q1.move();
+      
+      if(q1.isCollectedBy()){
+        
+        float t = random(0,10); //create variable for type of powerup
+        PVector pls = new PVector(2,0); //create new vector to be added to the 
+        
+        //create list of power-ups to be collected by the paddle
+        if(t <= 1){ //increase the length of the paddle
+          p.b = p.b + 10;
+        }else if(1 < t <= 2){ //decrease the length of the paddle
+          p.b = p.b - 10;
+        }else if(2 < t <= 3){
+          //p.vel.add(pls); //increase the movement speed of the paddle
+        }else if(3 < t <= 4){
+          //p.vel.sub(pls);
+        }else if(4 < t <= 5){
+          //LASER!!!
+        }
+      }
     }
   }
 
