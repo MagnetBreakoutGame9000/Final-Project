@@ -96,6 +96,10 @@ void draw() {
       //if the ball intersects a block
       if (b.loc.x + b.diam/2 > b1.loc.x && b.loc.x - b.diam/2 < b1.loc.x + b1.wd/2 && b.loc.y + b.diam/2 > b1.loc.y && b.loc.y - b.diam/2 < b1.loc.y + b1.ht/2) {
 
+        if (b1.hasPowerUp()) {
+          q.add(new Pill(b1.loc.x, b1.loc.y));
+        }
+
         //if health is equal to one at the time of contact
         if (b1.health == 1) {
 
@@ -149,10 +153,8 @@ void draw() {
   //spawn a pill if the hasPowerUp function returns true when a block is hit
   for (int i = q.size() - 1; i >= 0; i--) {
     Pill q1 = q.get(i);
-    if (bi.hasPowerUp()) {
-      q1.display();
-      q1.move();
-    }
+    q1.display();
+    q1.move();
     if (q1.isCollectedBy()) {
 
       float t = random(1, 6); //create variable for type of powerup
