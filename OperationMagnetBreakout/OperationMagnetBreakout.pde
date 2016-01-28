@@ -35,7 +35,10 @@ void setup() {
 
   lz = 0; //initialize lz as 0
   menu = 0; //original menu that pops up is the starting menu with the instructions for the user
-
+minim = new Minim(this);
+player = minim.loadFile("Celebrate Good Times... Come on!!!.mp3");
+player2 =  minim.loadFile("Pac-Man intro music.mp3");
+player3 = minim.loadFile("Sad Violin.mp3");
   p = new Paddle();
   b = new Ball(width/2, height/2);
   
