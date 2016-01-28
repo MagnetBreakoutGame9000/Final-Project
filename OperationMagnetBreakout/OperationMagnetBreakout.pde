@@ -1,3 +1,12 @@
+import ddf.minim.*;
+import ddf.minim.analysis.*;
+import ddf.minim.effects.*;
+import ddf.minim.signals.*;
+import ddf.minim.spi.*;
+import ddf.minim.ugens.*;
+
+import processing.sound.*;
+
 import processing.sound.*;
 
 //create arraylists for each row of block
@@ -15,15 +24,19 @@ int menu;   //starting menu =  menu 0, game code = menu 1, pause menu = menu 2
 int health; //declare variable for the block health
 Paddle p;  //initialize object from the Paddle class
 Ball b;  //initialize object from the Ball class
+Minim minim;
+AudioPlayer player;
+AudioPlayer player2;
+AudioPlayer player3;
 
 import processing.sound.*;
 SoundFile file;
 void setup() {
   //define size of canvas
   size(1100, 700);
-
- file = new SoundFile(this, "Celebrate Good Times... Come on!!!.mp3");
- file.play();
+minim = new Minim(this);
+player = minim.loadFile("Celebrate Good Times... Come on!!!.mp3");
+ 
   lz = 0; //initialize lz as 0
   menu = 0; //original menu that pops up is the starting menu with the instructions for the user
 
@@ -271,6 +284,7 @@ void draw() {
     menu = 2;
   }
   if (menu == 2) {
+    player.play();
     fill(255);
     textAlign(CENTER);
     text("GAME OVER", width/2, height/2);
