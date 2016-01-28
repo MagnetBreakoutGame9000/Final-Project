@@ -1,10 +1,16 @@
 class Block {
 
-  //float location, width, height, and color variables
+  //float location vector
   PVector loc;
+  
+  //float width and height variables
   float wd;
   float ht;
+  
+  //float health variable
   float health;
+  
+  //float color variable
   float r;
   float g;
   float b;
