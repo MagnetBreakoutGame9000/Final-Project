@@ -36,7 +36,7 @@ void setup() {
   lz = 0; //initialize lz as 0
   menu = 0; //original menu that pops up is the starting menu with the instructions for the user
 minim = new Minim(this);
-player = minim.loadFile("Celebrate Good Times... Come on!!!.mp3");
+//player = minim.loadFile("Celebrate Good Times... Come on!!!.mp3");
 player2 =  minim.loadFile("Pac-Man intro music.mp3");
 player3 = minim.loadFile("Sad Violin.mp3");
   p = new Paddle();
@@ -72,6 +72,7 @@ void draw() {
     textSize(25);
     text(" - Press 'i' to view instructions", width/2, height/2 +100);
     text(" - Press ENTER to play", width/2, height/2 +70);
+    player2.play();
     if (keyPressed == true && key == ENTER) { //If enter key pressed, exits starting menu and starts game
       menu = 2;
     }
@@ -90,6 +91,7 @@ void draw() {
     text("- Press left and right arrow keys on the keyboard to move the paddle.", width/2, height/2 + 20); //Instruction 2
     text("- To activate a powerup, press the spacebar.", width/2, height/2 + 40); //Instruction 2
     text(" - Press ENTER key to play", width/2, height/2 +70);
+    player2.play();
   }
 
   if (keyPressed == true && key == ENTER ) { //If ENTER key pressed, exits starting menu and starts game
@@ -316,6 +318,7 @@ void draw() {
     text("GAME OVER!!!", width/2, height/2);
     text("You Lose!", width/2, height/2 + 70);
      text("Your Score Is:" + score, width/2, height/2 + 140);
+     player3.play();
   }
   if (menu == 4) {
     background(255);
