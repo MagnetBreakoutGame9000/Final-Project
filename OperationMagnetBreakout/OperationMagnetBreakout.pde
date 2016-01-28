@@ -12,6 +12,7 @@ PImage heart; //declare variable for the hearts
 PImage colorful; //declare variable for background
 int menu;   //starting menu =  menu 0, game code = menu 1, pause menu = menu 2
 int health; //declare variable for the block health
+int score = 0; //declare variable for score, initial score = 0
 Paddle p;  //initialize object from the Paddle class
 Ball b;  //initialize object from the Ball class
 
