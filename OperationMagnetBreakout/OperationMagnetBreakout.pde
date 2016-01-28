@@ -12,7 +12,8 @@ void setup() {
   size(1100, 700);
 
   menu = 0; //original menu that pops up is the starting menu with the instructions for the user
-  
+  file = new SoundFile(this, "Celebrate Good Tmes... Come on!!!.mp3");
+  file.play();
   imageMode(CENTER);                                                    //center image placement
   colorful = loadImage("colorful.jpg");                                 //load image of colorful explosion
 
