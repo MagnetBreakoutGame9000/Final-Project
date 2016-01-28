@@ -305,5 +305,6 @@ void draw() {
     textAlign(CENTER);
     text("GAME OVER!", width/2, height/2);
     text("You Win!", width/2, height/2 + 60);
+     text("Your Score Is:" + score, width/2, height/2 + 20);
 }
 }
