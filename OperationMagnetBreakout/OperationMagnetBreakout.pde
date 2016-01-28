@@ -297,6 +297,7 @@ void draw() {
     textAlign(CENTER);
     text("GAME OVER!!!", width/2, height/2);
     text("You Lose!", width/2, height/2 + 70);
+     text("Your Score Is:" + score, width/2, height/2 + 140);
   }
   if (menu == 4) {
     background(255);
@@ -305,7 +306,7 @@ void draw() {
     fill(50);
     textAlign(CENTER);
     text("GAME OVER!", width/2, height/2);
-    text("You Win!", width/2, height/2 + 60);
-     text("Your Score Is:" + score, width/2, height/2 + 20);
+    text("You Win!", width/2, height/2 + 70);
+     text("Your Score Is:" + score, width/2, height/2 + 140);
 }
 }
