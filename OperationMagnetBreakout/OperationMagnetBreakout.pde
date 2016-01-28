@@ -36,7 +36,8 @@ void setup() {
   size(1100, 700);
 minim = new Minim(this);
 player = minim.loadFile("Celebrate Good Times... Come on!!!.mp3");
- 
+player2 =  minim.loadFile("Pac-Man intro music.mp3");
+player3 = minim.loadFile("Sad Violin.mp3");
   lz = 0; //initialize lz as 0
   menu = 0; //original menu that pops up is the starting menu with the instructions for the user
 
@@ -64,6 +65,7 @@ void draw() {
     background(0);  //background for txt is black
     textAlign(CENTER);  // aligns text
     textSize(30);  //sets size of the "Instructions" text
+    player2.play();
     text("Instructions", width/2, height/2 - 40);  //display title called "Instructions"
     textSize(20); //sets size of the rest of the text to a smaller size than the title
     text("- Press left and right arrow keys on the keyboard to move the paddle.", width/2, height/2 + 20); //Instruction 2
