@@ -297,4 +297,13 @@ void draw() {
     text("GAME OVER!!!", width/2, height/2);
     text("You Lose!", width/2, height/2 + 70);
   }
+  if (menu == 4) {
+    background(255);
+    image(colorful, width/2, height/2, colorful.width, colorful.height);         //loads background image
+    textSize(80);
+    fill(50);
+    textAlign(CENTER);
+    text("GAME OVER!", width/2, height/2);
+    text("You Win!", width/2, height/2 + 60);
+}
 }
