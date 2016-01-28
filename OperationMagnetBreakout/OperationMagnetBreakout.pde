@@ -28,6 +28,7 @@ Minim minim;
 AudioPlayer player;
 AudioPlayer player2;
 AudioPlayer player3;
+AudioPlayer player4;
 
 void setup() {
   //define size of canvas
@@ -39,6 +40,7 @@ void setup() {
   player = minim.loadFile("bensound-funkyelement.mp3");
   player2 =  minim.loadFile("Pac-Man intro music.mp3");
   player3 = minim.loadFile("Sad Violin.mp3");
+  player4 = minim.loadFile("Nintendo Wii - Mii Channel - Plaza Music (Extended) HD.mp3");
   p = new Paddle();
   b = new Ball(width/2, height/2);
 
@@ -111,6 +113,7 @@ void draw() {
     fill(255); //make fill of the bar white
     rect(0, 4.7*height/5, width, 4.75*height/5); //make bar at the bottom of the screen for health hearts
     player.pause();
+    player4.play();
     imageMode(CENTER); //use the center of the image for the starting point
     if (health == 3) { //if full health, display three hearts
       image(heart, 30, height-20, 30, 30);
@@ -349,6 +352,7 @@ void draw() {
     text("Your Score Is:" + score, width/2, height/2 + 140);
     player3.play();
     player.pause();
+    player4.pause();
   }
   if (menu == 4) {
     background(255);
