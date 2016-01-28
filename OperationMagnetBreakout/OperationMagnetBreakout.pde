@@ -199,12 +199,16 @@ void draw() {
         p.r = 100;
         p.g = 255;
         p.bl = 100;
-        p.b = p.b + 10;
+        if(p.b < 160){ //only increase the size if the paddle isn't too big
+          p.b = p.b + 10;
+        }
       } else if (t == 2) { //decrease the length of the paddle and color it yellow
         p.r = 255;
         p.g = 255;
-        p.bl = 0;
-        p.b = p.b - 10;
+        p.bl = 50;
+        if(p.b > 40){
+          p.b = p.b - 10; //only decrease the size if the paddle isn't too small
+        }
       } else if (t == 3) { //increase the movement speed of the paddle and color it red
         p.r = 255;
         p.g = 50;
@@ -219,11 +223,11 @@ void draw() {
         lz = 3; //give the player three shots of the laser and color it 
         p.r = 255;
         p.g = 165;
-        p.b = 0;
+        p.bl = 10;
       } else if (t == 6) {
         b.vel.mult(1.1); //increase the movement speed of the ball and increase its redness
-        b.g = p.g - 10;
-        b.bl = p.bl - 10;
+        b.g = b.g - 10;
+        b.bl = b.bl - 10;
       }
       q.remove(i); //remove the pill from the arrayList
     }
