@@ -100,6 +100,7 @@ void draw() {
     text("Laser (3 shots per pickup); Orange. Press 'L' to fire", width/2, height/2 + 170);
     text("Increased projectile speed: Red (increases w/ each pickup)", width/2, height/2 + 190);
     player.play();
+    player2.pause();
     textSize(50);
     text("Press ENTER key to play", width/2, height - 90);
   }
@@ -109,6 +110,7 @@ void draw() {
   } else if (menu==2) {
     fill(255); //make fill of the bar white
     rect(0, 4.7*height/5, width, 4.75*height/5); //make bar at the bottom of the screen for health hearts
+    player.pause();
     imageMode(CENTER); //use the center of the image for the starting point
     if (health == 3) { //if full health, display three hearts
       image(heart, 30, height-20, 30, 30);
@@ -346,6 +348,7 @@ void draw() {
 
     text("Your Score Is:" + score, width/2, height/2 + 140);
     player3.play();
+    player.pause();
   }
   if (menu == 4) {
     background(255);
