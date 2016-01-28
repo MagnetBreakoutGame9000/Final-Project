@@ -284,9 +284,9 @@ void draw() {
     p.loc.x = 0; //prevent paddle from moving beyond left edge of the canvas
   }
 
-  if (bi.size() == 0) {
-    menu = 2;
-  }
+  if(bi.size() <= 0){
+  menu = 4;
+}
   if (menu == 3) {
     background(255);
     textAlign(CENTER);  // aligns text

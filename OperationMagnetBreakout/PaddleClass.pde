@@ -10,7 +10,7 @@ class Paddle {
     loc = new PVector(width/2, 4.7*height/5-h);
     
     //define the vector for the movement of the paddle
-    mov = new PVector(4,0);
+    mov = new PVector(6,0);
     
     //define length of base and height of the paddle
     b = 100;
