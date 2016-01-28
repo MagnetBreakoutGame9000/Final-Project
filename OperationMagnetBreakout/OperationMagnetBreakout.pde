@@ -24,6 +24,10 @@ int health; //declare variable for the block health
 int score = 0; //declare variable for score, initial score = 0
 Paddle p;  //initialize object from the Paddle class
 Ball b;  //initialize object from the Ball class
+Minim minim;
+AudioPlayer player;
+AudioPlayer player2;
+AudioPlayer player3;
 
 void setup() {
   //define size of canvas
