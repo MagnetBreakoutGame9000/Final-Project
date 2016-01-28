@@ -3,6 +3,7 @@ ArrayList<Block> bi;
 PImage heart; //declare variable for the hearts
 int menu;   //starting menu =  menu 0, game code = menu 1, pause menu = menu 2
 int health; //declare variable for the block health
+int score = 0; //declare variable for score, initial score = 0
 Paddle p;  //initialize object from the Paddle class
 Ball b;  //initialize object from the Ball class
 
@@ -68,6 +69,7 @@ void draw() {
     if (b.isInContactWith(p)) {
       b.vel.y *= -1;
       b.vel.x = map(b.loc.x - p.loc.x, 0, 100, -5, 5);
+      score += 10;
     }
     //if ball touches the bottle of the game window, 1 life is lost
     if(b.loc.y + b.diam/2 >= 4.7*height/5) {
@@ -114,5 +116,7 @@ void draw() {
     fill(255);
     textAlign(CENTER);
     text("GAME OVER", width/2, height/2);
+    text("Your Score Is:" + score, width/2, height/2 + 20);
   }
+ 
 }
