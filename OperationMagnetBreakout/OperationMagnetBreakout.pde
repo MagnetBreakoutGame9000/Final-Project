@@ -9,6 +9,7 @@ ArrayList<Laser> li;
 
 int lz; //declare variable for determining if player has access to the laser
 PImage heart; //declare variable for the hearts
+PImage colorful; //declare variable for background
 int menu;   //starting menu =  menu 0, game code = menu 1, pause menu = menu 2
 int health; //declare variable for the block health
 Paddle p;  //initialize object from the Paddle class
@@ -23,6 +24,9 @@ void setup() {
 
   p = new Paddle();
   b = new Ball(width/2, height/2);
+  
+imageMode(CENTER);                                                    //center image placement
+colorful = loadImage("colorful.jpg");                                 //load image of colorful explosion
 
   //define arraylists after the size has been defined
   bi = new ArrayList<Block>();
