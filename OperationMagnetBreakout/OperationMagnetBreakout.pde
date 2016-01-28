@@ -288,7 +288,10 @@ void draw() {
     menu = 2;
   }
   if (menu == 3) {
-    fill(255);
+    background(255);
+    textAlign(CENTER);  // aligns text
+    textSize(80);
+    fill(50);
     image(colorful, width/2, height/2, colorful.width, colorful.height);         //loads background image
     textAlign(CENTER);
     text("GAME OVER!!!", width/2, height/2);
