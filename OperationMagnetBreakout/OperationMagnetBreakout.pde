@@ -102,7 +102,9 @@ void draw() {
     if (b.isInContactWith(p)) {
       b.vel.y *= -1;
       b.vel.x = map(b.loc.x - p.loc.x, 0, 100, -5, 5);
+      score += 10;
     }
+    
     //if ball touches the bottle of the game window, 1 life is lost
     if (b.loc.y + b.diam/2 >= 4.7*height/5) {
       health -= 1;
