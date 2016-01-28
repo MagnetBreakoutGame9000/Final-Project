@@ -14,10 +14,14 @@ int health; //declare variable for the block health
 Paddle p;  //initialize object from the Paddle class
 Ball b;  //initialize object from the Ball class
 
+import processing.sound.*;
+SoundFile file;
 void setup() {
   //define size of canvas
   size(1100, 700);
 
+ file = new SoundFile(this, "Celebrate Good Times... Come on!!!.mp3");
+ file.play();
   lz = 0; //initialize lz as 0
   menu = 0; //original menu that pops up is the starting menu with the instructions for the user
 
