@@ -1,5 +1,0 @@
-class Soundfile {
-  void play(){
-    
-  }
-}
