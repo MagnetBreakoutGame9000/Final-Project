@@ -193,34 +193,55 @@ void draw() {
     }
 
     for (int i = li.size() - 1; i >= 0; i--) {
+      
+      //create a new laser
       Laser l = li.get(i);
+      //display the laser
       l.display();
+      //move the laser
       l.move();
+      
+      //if the laser hits the top of the screen, remove the laser
       if (l.loc.y < 0) {
         li.remove(l);
       }
+      
+      //for the array of blocks
       for (int j = bi.size() - 1; j >= 0; j--) {
         Block b1 = bi.get(j);
+        
+        //if the laser is in contact with a block
         if (l.isInContactWith(b1)) {
-          //println("Laser hit at x = " + l.loc.x + " and block was from range x = " + (b1.loc.x - b1.wd/2) + " to " + (b1.loc.x + b1.wd/2) + ".");
+          
+          //if the block has one health at the time of contact, remove both block and laser
           if (b1.health == 1) {
             li.remove(l);
             bi.remove(b1);
+            
+            //if the block has more than one health at the time of contact, remove the laser and decrease the block's health by 1
           } else if (b1.health > 1) {
             li.remove(l);
             b1.health--;
+            
+            //if the color of the block is purple at the time of contact, make the block's color blue
             if (b1.r == 150 && b1.g == 0 && b1.b == 255) {
               b1.r = 0;
               b1.g = 0;
               b1.b = 255;
+              
+              //if the color of the block is blue at the time of contact, make the block's color green
             } else if (b1.r == 0 && b1.g == 0 && b1.b == 255) {
               b1.r = 0;
               b1.g = 255;
               b1.b = 0;
+              
+              //if the color of the block is green at the time of contact, make the block's color yellow
             } else if (b1.r == 0 && b1.g == 255 && b1.b == 0) {
               b1.r = 255;
               b1.g = 255;
               b1.b = 0;
+              
+              //if the color of the block is yellow at the time of contact, make the block's color red
             } else if (b1.r == 255 && b1.g == 255 && b1.b == 0) {
               b1.r = 255;
               b1.g = 0;
@@ -232,11 +253,12 @@ void draw() {
     }
   }
 
+  //if the paddle begins to go beyond the edge of the canvas, reset its location
   if (p.loc.x + p.b > width) {
-    p.loc.x = width - p.b;
+    p.loc.x = width - p.b; //prevent paddle from moving beyond right edge of the canvas
   }
-  if (p.loc.x < 0) {
-    p.loc.x = 0;
+  if (p.loc.x < 0) { 
+    p.loc.x = 0; //prevent paddle from moving beyond left edge of the canvas
   }
 
   if (bi.size() == 0) {
