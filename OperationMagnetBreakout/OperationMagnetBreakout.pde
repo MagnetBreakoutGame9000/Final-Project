@@ -41,9 +41,9 @@ player2 =  minim.loadFile("Pac-Man intro music.mp3");
 player3 = minim.loadFile("Sad Violin.mp3");
   p = new Paddle();
   b = new Ball(width/2, height/2);
-  
-imageMode(CENTER);                                                    //center image placement
-colorful = loadImage("colorful.jpg");                                 //load image of colorful explosion
+
+  imageMode(CENTER);                                                    //center image placement
+  colorful = loadImage("colorful.jpg");                                 //load image of colorful explosion
 
   //define arraylists after the size has been defined
   bi = new ArrayList<Block>();
@@ -61,7 +61,7 @@ colorful = loadImage("colorful.jpg");                                 //load ima
 
 void draw() {
   background(0);
-  
+
   if (menu==0) {
     background(0);  //background for txt is black
     image(colorful, width/2, height/2, colorful.width, colorful.height);         //loads background image
@@ -85,11 +85,21 @@ void draw() {
     image(colorful, width/2, height/2, colorful.width, colorful.height);         //loads background image
     textAlign(CENTER);  // aligns text
     textSize(30);  //sets size of the "Instructions" text
-    text("Instructions", width/2, height/2 - 40);  //display title called "Instructions"
+    text("Instructions", width/2, height/2 - 80);  //display title called "Instructions"
     textSize(20); //sets size of the rest of the text to a smaller size than the title
-    text("- Press left and right arrow keys on the keyboard to move the paddle.", width/2, height/2 + 20); //Instruction 2
-    text("- To activate a powerup, press the spacebar.", width/2, height/2 + 40); //Instruction 2
-    text(" - Press ENTER key to play", width/2, height/2 +70);
+    text("- Press left and right arrow keys on the keyboard to move the paddle.", width/2, height/2 ); //Instruction 2
+    text("- To activate a powerup, press the spacebar.", width/2, height/2 + 20); //Instruction 2
+    //list power-ups available
+    text("POWER UPS:", width/2, height/2 + 70);
+    text("Lengthened Paddle: Green", width/2, height/2 + 90);
+    text("Shortened Paddle: Yellow", width/2, height/2 + 110);
+    text("Increased Paddle Movement: Red", width/2, height/2 + 130);
+    text("Decreased Paddle Speed: Blue", width/2, height/2 + 150);
+    text("Laser (3 shots per pickup); Orange. Press 'L' to fire", width/2, height/2 + 170);
+    text("Increased projectile speed: Red (increases w/ each pickup)", width/2, height/2 + 190);
+    
+    textSize(50);
+    text("Press ENTER key to play", width/2, height - 90);
   }
 
   if (keyPressed == true && key == ENTER ) { //If ENTER key pressed, exits starting menu and starts game
@@ -120,7 +130,7 @@ void draw() {
       b.vel.x = map(b.loc.x - p.loc.x, 0, 100, -5, 5);
       score += 10;
     }
-    
+
     //if ball touches the bottle of the game window, 1 life is lost
     if (b.loc.y + b.diam/2 >= 4.7*height/5) {
       health -= 1;
@@ -189,40 +199,52 @@ void draw() {
     }
   }
 
-
-  //if (b.loc.x > b1.loc.x && b.loc.x < b1.loc.x + b1.wd && b.loc.y + b.diam/2 > b1.loc.y){
-  // b.vel.y *= -1;
-  //}
-
   //spawn a pill if the hasPowerUp function returns true when a block is hit
   for (int i = q.size() - 1; i >= 0; i--) {
     Pill q1 = q.get(i);
     q1.display();
     q1.move();
     if (q1.isCollectedBy()) {
-      
+
       float t = random(1, 6); //create variable for type of powerup
       t = round(t);
       PVector ad = new PVector(2, 0); //create new vector to be added to the velocity of the paddle
 
       //create list of power-ups to be collected by the paddle
-      if (t == 1) { //increase the length of the paddle
+      if (t == 1) { //increase the length of the paddle and color it green
+        p.r = 100;
+        p.g = 255;
+        p.bl = 100;
         p.b = p.b + 10;
-      } else if (t == 2) { //decrease the length of the paddle
+      } else if (t == 2) { //decrease the length of the paddle and color it yellow
+        p.r = 255;
+        p.g = 255;
+        p.bl = 0;
         p.b = p.b - 10;
-      } else if (t == 3) {
+      } else if (t == 3) { //increase the movement speed of the paddle and color it red
+        p.r = 255;
+        p.g = 50;
+        p.bl = 50;
         p.mov.add(ad); //increase the movement speed of the paddle
-      } else if (t == 4) {
+      } else if (t == 4) { //decrease the movement speed of the paddle and color it blue
         p.mov.sub(ad); //decrease the movement speed of the paddle
+        p.r = 50;
+        p.g = 50;
+        p.bl = 255;
       } else if (t == 5) {
-        lz = 3; //give the player three shots of the laser
+        lz = 3; //give the player three shots of the laser and color it 
+        p.r = 255;
+        p.g = 165;
+        p.b = 0;
       } else if (t == 6) {
-        b.vel.mult(1.1); //increase the movement speed of the ball
+        b.vel.mult(1.1); //increase the movement speed of the ball and increase its redness
+        b.g = p.g - 10;
+        b.bl = p.bl - 10;
       }
       q.remove(i); //remove the pill from the arrayList
     }
   }
-  
+
   if (lz > 0) {
     if (keyPressed) {
       if (key == 'l') {
@@ -235,54 +257,54 @@ void draw() {
     }
 
     for (int i = li.size() - 1; i >= 0; i--) {
-      
+
       //create a new laser
       Laser l = li.get(i);
       //display the laser
       l.display();
       //move the laser
       l.move();
-      
+
       //if the laser hits the top of the screen, remove the laser
       if (l.loc.y < 0) {
         li.remove(l);
       }
-      
+
       //for the array of blocks
       for (int j = bi.size() - 1; j >= 0; j--) {
         Block b1 = bi.get(j);
-        
+
         //if the laser is in contact with a block
         if (l.isInContactWith(b1)) {
-          
+
           //if the block has one health at the time of contact, remove both block and laser
           if (b1.health == 1) {
             li.remove(l);
             bi.remove(b1);
-            
+
             //if the block has more than one health at the time of contact, remove the laser and decrease the block's health by 1
           } else if (b1.health > 1) {
             li.remove(l);
             b1.health--;
-            
+
             //if the color of the block is purple at the time of contact, make the block's color blue
             if (b1.r == 150 && b1.g == 0 && b1.b == 255) {
               b1.r = 0;
               b1.g = 0;
               b1.b = 255;
-              
+
               //if the color of the block is blue at the time of contact, make the block's color green
             } else if (b1.r == 0 && b1.g == 0 && b1.b == 255) {
               b1.r = 0;
               b1.g = 255;
               b1.b = 0;
-              
+
               //if the color of the block is green at the time of contact, make the block's color yellow
             } else if (b1.r == 0 && b1.g == 255 && b1.b == 0) {
               b1.r = 255;
               b1.g = 255;
               b1.b = 0;
-              
+
               //if the color of the block is yellow at the time of contact, make the block's color red
             } else if (b1.r == 255 && b1.g == 255 && b1.b == 0) {
               b1.r = 255;
@@ -303,9 +325,9 @@ void draw() {
     p.loc.x = 0; //prevent paddle from moving beyond left edge of the canvas
   }
 
-  if(bi.size() <= 0){
-  menu = 4;
-}
+  if (bi.size() <= 0) {
+    menu = 4;
+  }
   if (menu == 3) {
     background(255);
     textAlign(CENTER);  // aligns text
@@ -315,7 +337,7 @@ void draw() {
     textAlign(CENTER);
     text("GAME OVER!!!", width/2, height/2);
     text("You Lose!", width/2, height/2 + 70);
-     text("Your Score Is:" + score, width/2, height/2 + 140);
+    text("Your Score Is:" + score, width/2, height/2 + 140);
   }
   if (menu == 4) {
     background(255);
@@ -325,6 +347,6 @@ void draw() {
     textAlign(CENTER);
     text("GAME OVER!", width/2, height/2);
     text("You Win!", width/2, height/2 + 70);
-     text("Your Score Is:" + score, width/2, height/2 + 140);
-}
+    text("Your Score Is:" + score, width/2, height/2 + 140);
+  }
 }

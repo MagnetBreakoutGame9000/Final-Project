@@ -2,13 +2,20 @@ class Ball {
   PVector loc;
   PVector vel;
   int diam;
+  int r;
+  int g;
+  int bl;
   Ball(float x, float y) {
     loc = new PVector(x, y);
     vel = new PVector(3, 4);
     diam = 20;
+    r = 255;
+    g = 255;
+    bl = 255;
   }
 
   void display() {
+    fill(r,g,bl);
     ellipse(loc.x, loc.y, diam, diam);
   }
 

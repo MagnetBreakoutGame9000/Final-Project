@@ -3,6 +3,9 @@ class Paddle {
   PVector mov; //declare variable for the movement of the paddle
   int b; //declare an integer for the length of the base of the paddle
   int h; //declare an integer for the height of the paddle
+  int r; //declare an integer for the red color of the paddle
+  int g; //declare an integer for the green color of the paddle
+  int bl; //declare an integer for the blue color of the paddle
 
   //create the paddle format itself
   Paddle() {
@@ -15,10 +18,15 @@ class Paddle {
     //define length of base and height of the paddle
     b = 100;
     h = 20;
+    
+    //define the starting color of the paddle as white
+    r = 255;
+    g = 255;
+    bl = 255;
   }
 
   void display() {
-    fill(255); //color of paddle is white
+    fill(r,g,bl); //color of paddle is white
     rect(loc.x, loc.y, b, -h); //paddle is a rectangle
   }
 
