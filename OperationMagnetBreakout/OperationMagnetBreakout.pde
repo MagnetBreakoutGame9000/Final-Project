@@ -121,7 +121,9 @@ if (menu==0) {
   //if (b.loc.x > b1.loc.x && b.loc.x < b1.loc.x + b1.wd && b.loc.y + b.diam/2 > b1.loc.y){
   // b.vel.y *= -1;
   //}
-
+if(bi.size() <= 0){
+  menu = 4;
+}
 
   if (p.loc.x + p.b > width) {
     p.loc.x = width - p.b;
@@ -142,4 +144,12 @@ if (menu==0) {
     text("GAME OVER!", width/2, height/2);
     text("You Lose!", width/2, height/2 + 60);
   }
+  if (menu == 4) {
+    background(255);
+    image(colorful, width/2, height/2, colorful.width, colorful.height);         //loads background image
+    textSize(80);
+    fill(50);
+    textAlign(CENTER);
+    text("GAME OVER!", width/2, height/2);
+    text("You Win!", width/2, height/2 + 60);
 }
