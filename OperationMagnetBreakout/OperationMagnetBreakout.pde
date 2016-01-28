@@ -36,7 +36,7 @@ void setup() {
   lz = 0; //initialize lz as 0
   menu = 0; //original menu that pops up is the starting menu with the instructions for the user
   minim = new Minim(this);
-  //player = minim.loadFile("Celebrate Good Times... Come on!!!.mp3");
+  player = minim.loadFile("bensound-funkyelement.mp3");
   player2 =  minim.loadFile("Pac-Man intro music.mp3");
   player3 = minim.loadFile("Sad Violin.mp3");
   p = new Paddle();
@@ -99,7 +99,7 @@ void draw() {
     text("Decreased Paddle Speed: Blue", width/2, height/2 + 150);
     text("Laser (3 shots per pickup); Orange. Press 'L' to fire", width/2, height/2 + 170);
     text("Increased projectile speed: Red (increases w/ each pickup)", width/2, height/2 + 190);
-    player2.play();
+    player.play();
     textSize(50);
     text("Press ENTER key to play", width/2, height - 90);
   }
