@@ -35,20 +35,39 @@ void setup() {
 void draw() {
   background(0);
 
-  if (menu==0) { //starting menu
+if (menu==0) {
     background(0);  //background for txt is black
+    image(colorful, width/2, height/2, colorful.width, colorful.height);         //loads background image
+    textAlign(CENTER);  // aligns text
+    textSize(50);
+    fill(50);
+    text("BREAKOUT", width/2, height/2);
+    textSize(25);
+    text(" - Press 'i' to view instructions", width/2, height/2 +100);
+    text(" - Press ENTER to play", width/2, height/2 +70);
+    if (keyPressed == true && key == ENTER) { //If enter key pressed, exits starting menu and starts game
+      menu = 2;
+    }
+    if (keyPressed == true && key == 'i') { //If i key pressed, exits starting menu and starts game
+      menu = 1;
+    }
+  }
+
+  if (menu==1) { //starting menu
+    background(0);  //background for txt is black
+    image(colorful, width/2, height/2, colorful.width, colorful.height);         //loads background image
     textAlign(CENTER);  // aligns text
     textSize(30);  //sets size of the "Instructions" text
     text("Instructions", width/2, height/2 - 40);  //display title called "Instructions"
     textSize(20); //sets size of the rest of the text to a smaller size than the title
     text("- Press left and right arrow keys on the keyboard to move the paddle.", width/2, height/2 + 20); //Instruction 2
     text("- To activate a powerup, press the spacebar.", width/2, height/2 + 40); //Instruction 2
-    text(" - Press 's' key to play", width/2, height/2 +70);
+    text(" - Press ENTER to play", width/2, height/2 +70);
   }
 
-  if (keyPressed == true && key == 's') { //If s key pressed, exits starting menu and starts game
-    menu = 1;
-  } else if (menu==1) {
+  if (keyPressed == true && key == ENTER) { //If s key pressed, exits starting menu and starts game
+    menu = 2;
+  } else if (menu==2) {
     fill(255); //make fill of the bar white
     rect(0, 4.7*height/5, width, 4.75*height/5); //make bar at the bottom of the screen for health hearts
     imageMode(CENTER); //use the center of the image for the starting point
@@ -78,7 +97,7 @@ void draw() {
       health -= 1;
     }
     if (health <= 0) {
-      menu = 2;
+      menu = 3;
     }
     //create first row of blocks
 
@@ -114,9 +133,13 @@ void draw() {
   if (bi.size() == 0) {
     menu = 2;
   }
-  if (menu == 2) {
-    fill(255);
+  if (menu == 3) {
+    background(255);
+    image(colorful, width/2, height/2, colorful.width, colorful.height);         //loads background image
+    textSize(80);
+    fill(50);
     textAlign(CENTER);
-    text("GAME OVER", width/2, height/2);
+    text("GAME OVER!", width/2, height/2);
+    text("You Lose!", width/2, height/2 + 60);
   }
 }
