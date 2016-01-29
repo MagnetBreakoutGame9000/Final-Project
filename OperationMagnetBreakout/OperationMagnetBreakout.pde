@@ -14,6 +14,7 @@ import ddf.minim.spi.*;
 import ddf.minim.ugens.*;
 
 //import from library
+import processing.sound.*;
 
 //create arraylists for each row of block
 ArrayList<Block> bi;
