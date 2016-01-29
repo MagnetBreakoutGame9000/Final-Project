@@ -1,3 +1,4 @@
+//import sound info from library
 import ddf.minim.*;
 import ddf.minim.analysis.*;
 import ddf.minim.effects.*;
@@ -5,7 +6,7 @@ import ddf.minim.signals.*;
 import ddf.minim.spi.*;
 import ddf.minim.ugens.*;
 
-//import from library
+//import sound info from library
 import ddf.minim.*;
 import ddf.minim.analysis.*;
 import ddf.minim.effects.*;
@@ -360,6 +361,8 @@ void draw() {
     text("GAME OVER!!!", width/2, height/2);
     text("You Lose!", width/2, height/2 + 70);
     text("Your Score Is:" + score, width/2, height/2 + 140);
+    
+    //play sad violin music
     player3.play();
     player.pause();
     player4.pause();
