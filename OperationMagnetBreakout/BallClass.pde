@@ -24,13 +24,18 @@ class Ball {
     g = 255;
     bl = 255;
   }
-
+  //draw the ball
   void display() {
+    //color the ball with red, green , and blue values
     fill(r,g,bl);
+    
+    //
     ellipse(loc.x, loc.y, diam, diam);
   }
 
+  //move the ball
   void move() {
+    //add the velocity to the location to move the ball
     loc.add(vel);
   }
 

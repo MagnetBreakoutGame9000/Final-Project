@@ -103,6 +103,8 @@ void draw() {
     text("Instructions", width/2, height/2 - 80);  //display title called "Instructions"
     textSize(20); //sets size of the rest of the text to a smaller size than the title
 
+
+    //write instruction text
     text("- Press left and right arrow keys on the keyboard to move the paddle.", width/2, height/2 ); //Instruction 2
     text("- To activate a powerup, press the spacebar.", width/2, height/2 + 20); //Instruction 2
     //list power-ups available
@@ -113,8 +115,12 @@ void draw() {
     text("Decreased Paddle Speed: Blue", width/2, height/2 + 150);
     text("Laser (3 shots per pickup); Orange. Press 'L' to fire", width/2, height/2 + 170);
     text("Increased projectile speed: Red (increases w/ each pickup)", width/2, height/2 + 190);
+    
+    //play music for instructions screen
     player.play();
     player2.pause();
+    
+    //write text to instruct players to begin game
     textSize(50);
     text("Press ENTER key to play", width/2, height - 90);
   }
