@@ -1,3 +1,4 @@
+//import sound info from library
 import ddf.minim.*;
 import ddf.minim.analysis.*;
 import ddf.minim.effects.*;
@@ -5,7 +6,7 @@ import ddf.minim.signals.*;
 import ddf.minim.spi.*;
 import ddf.minim.ugens.*;
 
-//import from library
+//import sound info from library
 import ddf.minim.*;
 import ddf.minim.analysis.*;
 import ddf.minim.effects.*;
@@ -101,6 +102,7 @@ void draw() {
     textSize(30);  //sets size of the "Instructions" text
     text("Instructions", width/2, height/2 - 80);  //display title called "Instructions"
     textSize(20); //sets size of the rest of the text to a smaller size than the title
+    //write instruction text
     text("- Press left and right arrow keys on the keyboard to move the paddle.", width/2, height/2 ); //Instruction 2
     //list power-ups available
     text("POWER UPS:", width/2, height/2 + 70);
@@ -110,8 +112,12 @@ void draw() {
     text("Decreased Paddle Speed: Blue", width/2, height/2 + 150);
     text("Laser (3 shots per pickup); Orange. Press 'L' to fire", width/2, height/2 + 170);
     text("Increased projectile speed: Red (increases w/ each pickup)", width/2, height/2 + 190);
+    
+    //play music for instructions screen
     player.play();
     player2.pause();
+    
+    //write text to instruct players to begin game
     textSize(50);
     text("Press ENTER key to play", width/2, height - 90);
   }
@@ -358,6 +364,8 @@ void draw() {
     text("GAME OVER!!!", width/2, height/2);
     text("You Lose!", width/2, height/2 + 70);
     text("Your Score Is:" + score, width/2, height/2 + 140);
+    
+    //play sad violin music
     player3.play();
     player.pause();
     player4.pause();
