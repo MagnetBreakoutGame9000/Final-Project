@@ -13,7 +13,8 @@ import ddf.minim.signals.*;
 import ddf.minim.spi.*;
 import ddf.minim.ugens.*;
 
-import processing.sound.*;
+//import from library
+
 //create arraylists for each row of block
 ArrayList<Block> bi;
 
