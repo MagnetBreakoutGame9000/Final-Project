@@ -39,22 +39,30 @@ class Ball {
     loc.add(vel);
   }
 
+  //make the ball bounce
   void bounce() {
+    //if the ball hits the top of the screen, reverse its vertical velocity
     if (loc.y - diam/2 <= 0) {
       vel.y *= -1;
     }
+    //if the ball hits the bottom of the screen, reverse its vertical velocity
     if (loc.y + diam/2 >= 4.7*height/5) {
       vel.y *= -1;
     }
+    //if the ball hits the left of the screen, reverse its horizontal velocity
     if (loc.x - diam/2 <= 0) {
       vel.x *= -1;
     }
+    //if the ball hits the right of the screen, reverse its horizontal velocity
     if (loc.x + diam/2 >= width) {
       vel.x *= -1;
     }
   }
 
+  //create boolean to determine if ball is in contact with the paddle
   boolean isInContactWith(Paddle pad) {
+    
+    //return TRUE if the ball is in contact with the paddle
     if (loc.y + diam/2 >= pad.loc.y - pad.h && loc.x >= pad.loc.x && loc.x <= pad.loc.x + pad.b) {
       return true;
     } else {
