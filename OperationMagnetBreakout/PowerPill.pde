@@ -9,7 +9,7 @@ class Pill {
   Pill(float x, float y) {
     //initialize the location (defined by the variables in the expression above) and the velocity
     loc = new PVector(x, y);
-    vel = new PVector(0, 1);
+    vel = new PVector(0, 4);
     
     //initialize the diameter of the pill
     diam = 15;

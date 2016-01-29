@@ -1,3 +1,10 @@
+import ddf.minim.*;
+import ddf.minim.analysis.*;
+import ddf.minim.effects.*;
+import ddf.minim.signals.*;
+import ddf.minim.spi.*;
+import ddf.minim.ugens.*;
+
 //import from library
 import ddf.minim.*;
 import ddf.minim.analysis.*;
@@ -77,9 +84,11 @@ void draw() {
     player2.play();
     if (keyPressed == true && key == ENTER) { //If enter key pressed, exits starting menu and starts game
       menu = 2;
+      player2.pause();
     }
     if (keyPressed == true && key == 'i') { //If i key pressed, exits starting menu and starts game
       menu = 1;
+      player2.pause();
     }
   }
 
@@ -348,7 +357,6 @@ void draw() {
     textAlign(CENTER);
     text("GAME OVER!!!", width/2, height/2);
     text("You Lose!", width/2, height/2 + 70);
-
     text("Your Score Is:" + score, width/2, height/2 + 140);
     player3.play();
     player.pause();
